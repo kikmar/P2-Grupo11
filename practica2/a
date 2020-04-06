@@ -1,0 +1,59 @@
+[33mcommit 4b64da52a12e1a4debb5fef594fbb04f74e932a5[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Cristian de Gracia <cristiandg5b@gmail.com>
+Date:   Mon Apr 6 17:32:56 2020 +0200
+
+    Añadidas las funciones isStudentOrTeacher y isPersonalFromUrjc
+
+[33mcommit 53f9b979f079d7a2e1692a6732b71464fc13d6e5[m
+Author: Cristian de Gracia <cristiandg5b@gmail.com>
+Date:   Mon Apr 6 17:26:34 2020 +0200
+
+    Añadida funcionalidad para saber si es alumno o profesor
+
+[33mcommit d6c7689e746f9a49e1c9318538579c65b6432a9d[m
+Author: Cristian de Gracia <cristiandg5b@gmail.com>
+Date:   Mon Apr 6 17:05:47 2020 +0200
+
+    Creacion del paquete de errores
+
+[33mcommit 9c02f4290463e7375048d05ce23d73162a68fa35[m
+Author: Cristian de Gracia <cristiandg5b@gmail.com>
+Date:   Mon Apr 6 17:02:13 2020 +0200
+
+    Estructuracion del proyecto
+
+[33mcommit e99836ee0c6d15ca06954f2fb18eaca745d2865f[m
+Author: Cristian de Gracia <cristiandg5b@gmail.com>
+Date:   Mon Apr 6 16:55:53 2020 +0200
+
+    Creacion del sistema de usuarios
+
+[33mcommit 40869b8ee4ad9acdb9ce1f496dae4269219f0550[m
+Author: Cristian de Gracia <cristiandg5b@gmail.com>
+Date:   Mon Apr 6 16:53:28 2020 +0200
+
+    Creacion de la clase Identifier
+
+[33mcommit dcb8cf830b5ba9fe40a8539a43f0cd684e8187d4[m
+Author: Cristian de Gracia <cristiandg5b@gmail.com>
+Date:   Mon Apr 6 16:46:55 2020 +0200
+
+    Creacion de paquetes principales
+
+[33mcommit 7762cc202fffb86ad4ef737a0cada50d87aa4839[m
+Author: Aitor <aitor.o.p.00@gmail.com>
+Date:   Mon Apr 6 15:46:42 2020 +0200
+
+    he eliminado el archivo de prueba.txt
+
+[33mcommit 6c8933394b4a0e222119c8dc085b80275a7b5cc6[m
+Author: Aitor <aitor.o.p.00@gmail.com>
+Date:   Mon Apr 6 15:40:52 2020 +0200
+
+    he añadido un archivo de texto
+
+[33mcommit ec79584aba85b9a4b8b4a3a3a45eb1bd1376916b[m
+Author: Aitor <aitor.o.p.00@gmail.com>
+Date:   Mon Apr 6 15:33:38 2020 +0200
+
+    Iniciamos la practica, sin nada
