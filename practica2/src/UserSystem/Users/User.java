@@ -3,74 +3,102 @@ package UserSystem.Users;
 
 
 public class User {
-    private String Nombre;
-    private String Apellido1;
-    private String Apellido2;
+    private String Name;
+    private String Surname1;
+    private String Surname2;
     private String Nick;
     private String Email;
-    private String Contrasena;
+    private String Pasword;
     private boolean Admin; 
-    private boolean EsAlumno;
-    private Penalizacion Penalizado;
-  //private ListaSuscripciones ListaSubforos
+    private boolean IsStudent;
+    private boolean  IsConected;
+  //private Penalizacion Penalizado; fata crear clase Penalización
+  //private ListaSuscripciones ListaSubforos falta crear clase ListaSuscripciones
 
+    public User(String Name, String Surname1, String Surname2, String Nick, String Email, String Pasword, boolean Admin, boolean IsStudent) {
+        this.Name = Name;
+        this.Surname1 = Surname1;
+        this.Surname2 = Surname2;
+        this.Nick = Nick;
+        this.Email = Email;
+        this.Pasword = Pasword;
+        this.Admin = Admin;
+        this.IsStudent = IsStudent;
+    }
 
-    
-    public void setNombre (String NombreUsuario){
-        Nombre = NombreUsuario;
-}
-        
-    public void setApellido1 (String Apellido1Usuario){
-        Apellido1 = Apellido1Usuario;
-}
+    public String getName() {
+        return Name;
+    }
 
-    public void setApellido2 (String Apellido2Usuario){
-        Apellido2 = Apellido2Usuario;
-}
-    
-     public void setNick (String NickUsuario){
-        Nick = NickUsuario;
-}
-     
-     public void setEmail (String EmailUsuario){
-         Email = EmailUsuario;
-}
-     
-     public void setContrasena (String ContrasenaUsuario){
-         Contrasena = ContrasenaUsuario;
-}
-     
-     public void setAdmin (boolean AdminUsuario){
-         Admin = AdminUsuario;
-}
-     
-     public void setEsAlumno (boolean EsAlumnoUsuario){
-         EsAlumno = EsAlumnoUsuario;
-}
-     
-     public void setPenalizado (Penalizacion PenalizadoUsuario){
-         Penalizado = PenalizacionUsuario;
-}
-    
-     public String getNick(){
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public String getSurname1() {
+        return Surname1;
+    }
+
+    public void setSurname1(String Surname1) {
+        this.Surname1 = Surname1;
+    }
+
+    public String getSurname2() {
+        return Surname2;
+    }
+
+    public void setSurname2(String Surname2) {
+        this.Surname2 = Surname2;
+    }
+
+    public String getNick() {
         return Nick;
-}
-     
-     public boolean getEsAlumno (){
-         return EsAlumno;
-}
-     
-     public String getEmail (){
-         return Email;
-     }
-     
-     public String getContrasena (){
-         return Contrasena;
-     }
-     
-     public Penalizacion getPenalizado (){
-         return Penalizado;
-     }
+    }
+
+    public void setNick(String Nick) {
+        this.Nick = Nick;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getPasword() {
+        return Pasword;
+    }
+
+    public void setPasword(String Pasword) {
+        this.Pasword = Pasword;
+    }
+
+    public boolean isAdmin() {
+        return Admin;
+    }
+
+    public void setAdmin(boolean Admin) {
+        this.Admin = Admin;
+    }
+
+    public boolean isIsStudent() {
+        return IsStudent;
+    }
+
+    public void setIsStudent(boolean IsStudent) {
+        this.IsStudent = IsStudent;
+    }
+
+    public boolean isIsConected() {
+        return IsConected;
+    }
+
+    public void setIsConected(boolean IsConected) {
+        this.IsConected = IsConected;
+    }
+
+    
         
 }
 

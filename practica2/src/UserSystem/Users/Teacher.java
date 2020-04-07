@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UserSystem.Users;
 
-/**
- *
- * @author crist
- */
-public class Teacher {
+public class Teacher extends User{
+
+    public Teacher(String Name, String Surname1, String Surname2, String Nick, String Email, String Pasword, boolean Admin, boolean IsStudent) {
+        super(Name, Surname1, Surname2, Nick, Email, Pasword, Admin, IsStudent);
+    }
     
 }
