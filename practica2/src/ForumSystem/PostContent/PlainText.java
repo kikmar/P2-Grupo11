@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ForumSystem.PostContent;
 
-/**
- *
- * @author crist
- */
-public class PlainText {
+
+public class PlainText extends Content {
     
+    public PlainText (String PostContent) {
+        super(PostContent);
 }
+    
+}//Final de clase 
