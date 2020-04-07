@@ -59,6 +59,7 @@ public class User {
      public boolean getEsAlumno (){
          return EsAlumno;
 }
+     
      public String getEmail (){
          return Email;
      }
