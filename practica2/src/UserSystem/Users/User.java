@@ -59,6 +59,17 @@ public class User {
      public boolean getEsAlumno (){
          return EsAlumno;
 }
+     public String getEmail (){
+         return Email;
+     }
+     
+     public String getContrasena (){
+         return Contrasena;
+     }
+     
+     public Penalizacion getPenalizado (){
+         return Penalizado;
+     }
         
 }
 
