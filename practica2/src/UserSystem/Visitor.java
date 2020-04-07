@@ -5,9 +5,18 @@
  */
 package UserSystem;
 
-/**
- *
- * @author crist
- */
+//Superclase Visitante
 public class Visitor {
+   
+   private int ID;
+   
+   public Visitor(int ID){
+   this.ID=ID;    
+   }
+   public int getID(){
+       return ID;
+   }
+   public void setID(int ID){
+       this.ID = ID;
+   }
 }

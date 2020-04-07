@@ -1,7 +1,7 @@
 package UserSystem.Users;
+import UserSystem.Visitor;
 
-
-public class User {
+public class User extends Visitor {
     private String Name;
     private String Surname1;
     private String Surname2;
@@ -11,10 +11,12 @@ public class User {
     private boolean Admin; 
     private boolean IsStudent;
     private boolean  IsConected;
+    private int ID;
   //private Penalizacion Penalizado; fata crear clase Penalización
   //private ListaSuscripciones ListaSubforos falta crear clase ListaSuscripciones
 
-    public User(String Name, String Surname1, String Surname2, String Nick, String Email, String Pasword, boolean Admin, boolean IsStudent) {
+    public User(String Name, String Surname1, String Surname2, String Nick, String Email, String Pasword, boolean Admin, boolean IsStudent,int ID) {
+        super (ID);
         this.Name = Name;
         this.Surname1 = Surname1;
         this.Surname2 = Surname2;

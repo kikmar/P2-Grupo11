@@ -5,10 +5,11 @@
  */
 package UserSystem;
 
-/**
- *
- * @author crist
- */
-public class Guest {
-    
+//Subclase invitado que hereda de la superclase visitante
+public class Guest extends Visitor {
+
+    public Guest(int ID){
+        super(ID);
+    }
+        
 }
