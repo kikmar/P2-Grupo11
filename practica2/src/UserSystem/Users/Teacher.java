@@ -1,9 +1,13 @@
 package UserSystem.Users;
 
-public class Teacher extends User{
+import java.io.Serializable;
 
-    public Teacher(String Name, String Surname1, String Surname2, String Nick, String Email, String Pasword, boolean Admin, boolean IsStudent, int ID) {
-        super(Name, Surname1, Surname2, Nick, Email, Pasword, Admin, IsStudent, ID);
+public class Teacher extends User implements Serializable{
+
+
+    public Teacher(String Name, String Surname1, String Surname2, String Nick, String Email, String Password, boolean IsAdmin, boolean IsStudent, boolean IsConected, int ID) {
+        super(Name, Surname1, Surname2, Nick, Email, Password, IsAdmin, IsStudent, IsConected, ID);
     }
+
     
 }

@@ -40,11 +40,11 @@ public class Identifier {
         if (isPersonalFromUrjc(Email)){
             
             if (isStudentOrTeacher(Email)){
-                User Student = new Student(Name,Surname1,Surname2, Nick, Email, Password,false,true);
+                User Student = new Student(Name,Surname1,Surname2,Nick,Email,Password,false, true,false,0);
                 WriteDataToDataBase(Student);    
             } 
             else{
-                User Teacher = new Teacher(Name,Surname1,Surname2, Nick, Email, Password,false,false);
+                User Teacher = new Teacher(Name,Surname1,Surname2, Nick, Email, Password,false,false,false,0);
                 WriteDataToDataBase(Teacher);
             }
         }
@@ -62,7 +62,7 @@ public class Identifier {
             User User = (User) UserList.get(i);
             
             if (User.getEmail().equals(Email) && User.getPassword().equals(Password)){
-                User.setIsLogged(true);
+                User.setIsConected(true);
                 
                 UserList.remove(i);
                 UserList.add(User);
@@ -87,7 +87,7 @@ public class Identifier {
             User User = (User) UserList.get(i);
             
             if (User.getEmail().equals(Email) && User.getPassword().equals(Password)){
-                User.setIsLogged(false);
+                User.setIsConected(false);
                 
                 UserList.remove(i);
                 UserList.add(User);
