@@ -1,9 +1,14 @@
 package UserSystem.Users;
 
-public class Student extends User{
+import java.io.Serializable;
 
-    public Student(String Name, String Surname1, String Surname2, String Nick, String Email, String Pasword, boolean Admin, boolean IsStudent, int ID) {
-        super(Name, Surname1, Surname2, Nick, Email, Pasword, Admin, IsStudent,ID);
+public class Student extends User implements Serializable{
+    
+ 
+
+    public Student(String Name, String Surname1, String Surname2, String Nick, String Email, String Password, boolean IsAdmin, boolean IsStudent, boolean IsConected, int ID) {
+        super(Name, Surname1, Surname2, Nick, Email, Password, IsAdmin, IsStudent, IsConected, ID);
     }
+
     
 }
