@@ -6,9 +6,14 @@
 package UserSystem;
 
 //Superclase Visitante
-public class Visitor {
+
+import java.io.Serializable;
+
+public class Visitor implements Serializable{
    
    private int ID;
+   private static final long serialVersionUID = 1L;
+
    
    public Visitor(int ID){
    this.ID=ID;    

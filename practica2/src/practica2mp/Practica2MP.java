@@ -1,18 +1,8 @@
 package practica2mp;
 
 import LoginSystem.Identifier;
-import UserSystem.Users.Student;
-import UserSystem.Users.User;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Scanner;
 public class Practica2MP {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
@@ -21,7 +11,7 @@ public class Practica2MP {
         //Pruebas de Identifier
         Identifier Ident = new Identifier();
         
-        //Ident.Register("Cristian","De Gracia","Nuero","Cfres","Cristian@urjc.es","1234");
+        Ident.Register("Cristian","De Gracia","Nuero","Cfres","Cristian@urjc.es","1234");
         /*
         //Parameters to create a new user
         Scanner scanner = new Scanner(System.in); 
