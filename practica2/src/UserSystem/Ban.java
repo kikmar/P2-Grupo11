@@ -88,13 +88,19 @@ public class Ban implements Serializable{
         }
 
         //Then rewrite the list with the new user
-        FileOutputStream OutputFile = new FileOutputStream("DataBase/Users/UsersDataBase.obj");
+        FileOutputStream OutputFile = new FileOutputStream("DataBase/Bans/BanDataBase.obj");
         ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
         OutputObject.writeObject(BanList); 
  
         OutputFile.close();
         OutputObject.close();
-
-
     }
+
+    @Override
+    public String toString() {
+        return "Nick=" + Nick + ", beginDate=" + beginDate + ", endDate=" + endDate
+                + ", isBanned=" + isBanned;
+    }
+
+    
 }
