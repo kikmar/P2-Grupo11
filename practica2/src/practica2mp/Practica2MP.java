@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import ForumSystem.Post;
 public class Practica2MP {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException, ParseException {
@@ -90,7 +91,9 @@ public class Practica2MP {
             else{
                 System.out.println("Error al iniciar sesion");
             }
-
+            
+      Post posts = new Post();
+      posts.adminMenu();
     }
     
 }

@@ -12,6 +12,7 @@ package ForumSystem;
 
 import ForumSystem.PostContent.Content;
 import UserSystem.Users.User;
+import java.util.Scanner;
 
 
 /**
@@ -20,6 +21,7 @@ import UserSystem.Users.User;
  */
 public class Post {
     //Atributos
+    
     private String title;
     private Content content;
     private int valoration;
@@ -111,4 +113,57 @@ public class Post {
     public void setCreator (User creator){
         this.creator = creator;
     }
+    
+    public void postCreation (String SubForo, String title, String text){
+        
+        
+    
+    }
+    
+    public void visibilityModification (){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Quiere cambiar la visibilidad del post? si/no");
+        String ask = sc.nextLine();
+        if (ask.equals ("si")){
+         // this.visible = !visible;
+          System.out.println("Ha cambiado la visibilidad del post");
+          }
+        else{
+          System.out.println("Se ha mantenido la visibilidad de origen"); 
+          
+          }
+    }
+    
+    public void adminMenu(){
+       Scanner sn = new Scanner(System.in);
+       boolean exit = false;
+       int option;
+       
+       while (!exit){
+       System.out.println("Se encuentra en el menu de administracion que accion quiere realizar:");
+       System.out.println("1- Cambiar visibilidad del post");
+       System.out.println("2- Penalizar Usuario");
+       System.out.println("3- Salir del menu administrador");       
+       System.out.println("Escribe una de las opciones");
+       option = sn.nextInt();
+         switch (option){
+             
+             case 1:
+               visibilityModification();
+               break;
+             case 3:
+               exit = true;
+               
+                 
+        
+       
+         } 
+       }
+    }
+    
+    
+    
+    
+    
+    
 }
