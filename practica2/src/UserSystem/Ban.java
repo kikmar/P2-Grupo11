@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -16,60 +19,79 @@ public class Ban implements Serializable{
     private boolean isBanned;
     private Date beginDate;
     private Date endDate;
-    private static final long serialVersionUID = 1L;
+    
     private File Bans = new File("DataBase/Bans/BansDataBase.obj");
+    
+    private static final long serialVersionUID = 1L;
+    
 
-    public Ban(final String Nick, final boolean isBanned, final Date beginDate, final Date endDate) {
+    public Ban(String Nick,boolean isBanned,String beginDate,String endDate) throws IOException, ClassNotFoundException, ParseException {
+        
+        
+        DateFormat begin = new SimpleDateFormat("dd-MM-yyyy");
+	Date beginDateConvert = begin.parse(beginDate);
+        
+        DateFormat end = new SimpleDateFormat("dd-MM-yyyy");
+	Date endDateConvert = end.parse(beginDate);
+	
+	
+        
         this.Nick = Nick;
         this.isBanned = isBanned;
-        this.beginDate = beginDate;
-        this.endDate = endDate;
+        this.beginDate = beginDateConvert;
+        this.endDate = endDateConvert;
+        
+        WriteDataToDataBase(this);
     }     
 
-    public boolean isBanned() {
-        return isBanned;
+    public String getNick() {
+        return Nick;
     }
 
-    public void setBanned(final boolean isBanned) {
-        this.isBanned = isBanned;
+    public boolean getIsBanned() {
+        return isBanned;
     }
 
     public Date getBeginDate() {
         return beginDate;
     }
 
-    public void setBeginDate(final Date beginDate) {
-        this.beginDate = beginDate;
-    }
-
     public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(final Date endDate) {
+    public File getBans() {
+        return Bans;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public void setNick(String Nick) {
+        this.Nick = Nick;
+    }
+
+    public void setIsBanned(boolean isBanned) {
+        this.isBanned = isBanned;
+    }
+
+    public void setBeginDate(Date beginDate) {
+        this.beginDate = beginDate;
+    }
+
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public String getNick() {
-        return Nick;
+    public void setBans(File Bans) {
+        this.Bans = Bans;
     }
 
-    public void setNick(final String nick) {
-        Nick = nick;
-    }
-
-    private LinkedList<Ban> GetBanList() throws FileNotFoundException, IOException, ClassNotFoundException{
-        FileInputStream InputFile = new FileInputStream("DataBase/Bans/BansDataBase.obj");
-        ObjectInputStream InputObject = new ObjectInputStream(InputFile);
-
-        LinkedList <Ban> BanList  = (LinkedList <Ban>) InputObject.readObject();
-
-        InputFile.close();
-        InputObject.close();
-
-        return BanList;
-    }
     
+   
+    
+     //Write User in to User´s file
     private void WriteDataToDataBase(Ban CreatedBan) throws IOException, ClassNotFoundException{ 
         LinkedList <Ban> BanList  = new LinkedList();
         //Check if there are more user´s in the file
@@ -79,28 +101,53 @@ public class Ban implements Serializable{
             BanList  = (LinkedList <Ban>) InputObject.readObject();
             InputFile.close();
             InputObject.close();
-            BanList.add(CreatedBan);
+            BanList.add(CreatedBan);         
         }
-
+        
         //If not this is the first user
         catch (Exception FileNotFoundException){
             BanList.add(CreatedBan);
         }
-
-        //Then rewrite the list with the new user
-        FileOutputStream OutputFile = new FileOutputStream("DataBase/Bans/BanDataBase.obj");
+        
+        //Then rewrite the list with the new user    
+        FileOutputStream OutputFile = new FileOutputStream(Bans);
         ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
         OutputObject.writeObject(BanList); 
  
         OutputFile.close();
         OutputObject.close();
-    }
 
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+    public void Mostrar() throws FileNotFoundException, IOException, ClassNotFoundException{
+        FileInputStream InputFile = new FileInputStream(Bans);
+        ObjectInputStream InputObject = new ObjectInputStream(InputFile);
+        
+        LinkedList <Ban> BanList  = (LinkedList <Ban>) InputObject.readObject();
+        InputFile.close();
+        InputObject.close();
+        for(int i = 0; i<BanList.size();i++){
+            System.out.println(BanList.get(i).toString());
+        }
+    }
+    
     @Override
     public String toString() {
-        return "Nick=" + Nick + ", beginDate=" + beginDate + ", endDate=" + endDate
-                + ", isBanned=" + isBanned;
+        
+        SimpleDateFormat beginDateDate = new SimpleDateFormat("yyyy/MM/dd");
+        String beginDateStr = beginDateDate.format(beginDate);
+        
+        SimpleDateFormat endDateDate = new SimpleDateFormat("yyyy/MM/dd");
+        String endDateStr = endDateDate.format(endDate);
+        
+        
+        
+        return "Nick: " + Nick + " . BeginDate: " + beginDateStr + " . endDate: " + endDateStr
+                + " . IsBanned= " + isBanned;
     }
-
+    
+    
+    
     
 }

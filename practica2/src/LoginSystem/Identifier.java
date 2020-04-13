@@ -5,6 +5,7 @@
  */
 package LoginSystem;
 
+import UserSystem.Ban;
 import UserSystem.Users.Student;
 import UserSystem.Users.Teacher;
 import UserSystem.Users.User;
@@ -57,26 +58,49 @@ public class Identifier {
     
     public boolean Login(String Email, String Password) throws IOException, FileNotFoundException, ClassNotFoundException{
         boolean IsLogged = false;
+        boolean IsBanned = false;
+        
         LinkedList UserList = GetUserList();
+        LinkedList BanList = GetBanList();
+        
+        //Find Email & Password match 
         for(int i = 0; i<UserList.size();i++){
             User User = (User) UserList.get(i);
-            
+              
             if (User.getEmail().equals(Email) && User.getPassword().equals(Password)){
-                User.setIsConected(true);
+                String Nick = User.getNick();
                 
-                UserList.remove(i);
-                UserList.add(User);
+                //If found, check if User is banned
+                for(int j = 0; j<BanList.size();j++){
+                    Ban ban = (Ban) BanList.get(j);  
+
+                    if(Nick.equals(ban.getNick())&& ban.getIsBanned()){
+                        IsBanned = true;
+                        break; 
+                    }
+                }    
                 
-                //Then rewrite the list with the new user    
-                FileOutputStream OutputFile = new FileOutputStream("DataBase/Users/UsersDataBase.obj");
-                ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
-                OutputObject.writeObject(UserList); 
-                
-                IsLogged = true;
-                
-                break;
+                //If is not banned, the user can login
+                if(!IsBanned){
+                    User.setIsConected(true);
+
+                    UserList.remove(i);
+                    UserList.add(User);
+
+                    //Then rewrite the list with the new user    
+                    FileOutputStream OutputFile = new FileOutputStream("DataBase/Users/UsersDataBase.obj");
+                    ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
+                    OutputObject.writeObject(UserList); 
+
+                    IsLogged = true;
+
+                    break; 
+                    }
+                 
             } 
+ 
         }
+          
         return IsLogged;
     }
     
@@ -171,6 +195,18 @@ public class Identifier {
         InputObject.close();
         
         return UserList;
+    }
+    
+    private LinkedList<Ban> GetBanList() throws FileNotFoundException, IOException, ClassNotFoundException{
+        FileInputStream InputFile = new FileInputStream("DataBase/Bans/BansDataBase.obj");
+        ObjectInputStream InputObject = new ObjectInputStream(InputFile);
+        
+        LinkedList <Ban> BanList  = (LinkedList <Ban>) InputObject.readObject();
+        
+        InputFile.close();
+        InputObject.close();
+        
+        return BanList;
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////
