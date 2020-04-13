@@ -64,13 +64,12 @@ public class Practica2MP {
             //ban1.Mostrar();
  
             
-           //Ident.Register("Alberto","Sroda","Gonzalez","Alfres","Alberto@urjc.es","1234");
-           //Ident.Register("Cristian","De Gracia","Nuero","Cfres","Cristian@urjc.es","1234");
+           Ident.Register("Alberto","Sroda","Gonzalez","Alfres","Alberto@urjc.es","1234");
+           Ident.Register("Cristian","De Gracia","Nuero","Cfres","Cristian@urjc.es","1234");
             
-           //Ban ban = new Ban("Admin",true,"09-04-2020","12-04-2020");
         
-           //Ban ban = new Ban("Alfres",true,"09-04-2020","12-04-2020");
-           //Ban ban = new Ban("Cfres",true,"09-04-2020","12-04-2020");
+           //Ban ban1 = new Ban("Alfres",true,"09-04-2020","12-04-2020");
+           //Ban ban2 = new Ban("Cfres",true,"09-04-2020","12-04-2020");
            //ban.Mostrar();
            //Ident.Mostrar();
             

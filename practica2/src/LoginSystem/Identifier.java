@@ -9,6 +9,7 @@ import UserSystem.Ban;
 import UserSystem.Users.Student;
 import UserSystem.Users.Teacher;
 import UserSystem.Users.User;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,9 +29,11 @@ public class Identifier {
     
     //Atributes
     private File Users = new File("DataBase/Users/UsersDataBase.obj");
+    private File Bans = new File("DataBase/Bans/BansDataBase.obj");
     
     //Constructor
     public Identifier() {   
+
     }
     
     //Register a user in to User´s file
@@ -62,7 +65,7 @@ public class Identifier {
         
         LinkedList UserList = GetUserList();
         LinkedList BanList = GetBanList();
-        
+                
         //Find Email & Password match 
         for(int i = 0; i<UserList.size();i++){
             User User = (User) UserList.get(i);
@@ -71,14 +74,21 @@ public class Identifier {
                 String Nick = User.getNick();
                 
                 //If found, check if User is banned
-                for(int j = 0; j<BanList.size();j++){
-                    Ban ban = (Ban) BanList.get(j);  
+                try{
+                    for(int j = 0; j<BanList.size();j++){
+                        Ban Ban = (Ban) BanList.get(j);  
 
-                    if(Nick.equals(ban.getNick())&& ban.getIsBanned()){
-                        IsBanned = true;
-                        break; 
-                    }
-                }    
+                        if(Nick.equals(Ban.getNick())&& Ban.getIsBanned()){
+                            IsBanned = true;
+                            break; 
+                        }
+                    }   
+                }
+                
+                catch(NullPointerException e){
+                    IsBanned = false;
+                }
+                   
                 
                 //If is not banned, the user can login
                 if(!IsBanned){
@@ -185,6 +195,7 @@ public class Identifier {
     }
     
     
+    //Returns User List from Data Base
     private LinkedList<User> GetUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
         FileInputStream InputFile = new FileInputStream("DataBase/Users/UsersDataBase.obj");
         ObjectInputStream InputObject = new ObjectInputStream(InputFile);
@@ -197,7 +208,10 @@ public class Identifier {
         return UserList;
     }
     
+    //Returns Ban List from Data Base
     private LinkedList<Ban> GetBanList() throws FileNotFoundException, IOException, ClassNotFoundException{
+       Bans.createNewFile();
+       try{
         FileInputStream InputFile = new FileInputStream("DataBase/Bans/BansDataBase.obj");
         ObjectInputStream InputObject = new ObjectInputStream(InputFile);
         
@@ -207,6 +221,11 @@ public class Identifier {
         InputObject.close();
         
         return BanList;
+       }
+       catch (EOFException e){
+         return null;  
+       }
+        
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////

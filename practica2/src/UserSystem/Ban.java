@@ -88,9 +88,6 @@ public class Ban implements Serializable{
         this.Bans = Bans;
     }
 
-    
-   
-    
      //Write User in to User´s file
     private void WriteDataToDataBase(Ban CreatedBan) throws IOException, ClassNotFoundException{ 
         LinkedList <Ban> BanList  = new LinkedList();
