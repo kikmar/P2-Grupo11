@@ -76,21 +76,21 @@ public class Practica2MP {
             
             //ban.Mostrar();
             
-            if(Ident.Login("Cristian@urjc.es","1234")){
-                System.out.println("Logueado con exito");
-                Ident.Logout("Cristian@urjc.es","1234");
-            }
-            else{
-                System.out.println("Error al iniciar sesion");
-            }
+            //if(Ident.Login("Cristian@urjc.es","1234")){
+             //   System.out.println("Logueado con exito");
+               // Ident.Logout("Cristian@urjc.es","1234");
+            //}
+            //else{
+              //  System.out.println("Error al iniciar sesion");
+            //}
             
-            if(Ident.Login("Alberto@urjc.es","1234")){
-                System.out.println("Logueado con exito");
-                Ident.Logout("Alberto@urjc.es","1234");
-            }
-            else{
-                System.out.println("Error al iniciar sesion");
-            }
+            //if(Ident.Login("Alberto@urjc.es","1234")){
+              //  System.out.println("Logueado con exito");
+               // Ident.Logout("Alberto@urjc.es","1234");
+           // }
+           // else{
+             //   System.out.println("Error al iniciar sesion");
+            //}
             
       Post posts = new Post();
       posts.adminMenu();

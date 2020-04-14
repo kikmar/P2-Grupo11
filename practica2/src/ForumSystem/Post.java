@@ -44,6 +44,7 @@ public class Post {
         this.voteList = voteList;
         this.updates = updates;
     }
+
     
     //Getters:
     
@@ -162,8 +163,72 @@ public class Post {
     }
     
     
+    public void contentChange () {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Desea cambiar algo del contenido de su post?");
+        String changes = sc.nextLine();
+        
+        if (changes == "si"){
+            System.out.println("Escriba su nuevo contenido");
+            String contenido = sc.nextLine();
+            
+        }
+    }
+    
+    public void menuCreator () {
+       Scanner sn = new Scanner(System.in);
+       boolean exit = false;
+       int option;
+       
+       while (!exit){
+       System.out.println(" *********************************************************** \n"
+                          +"********************* MENU CREADOR ************************ \n"
+                          +"                                                            \n"
+                          +"               1- Modificar post                            \n"
+                          +"               2- Crear post                                \n"
+                          +"                                                            \n"
+                          +"************************************************************\n");       
+       option = sn.nextInt();
+         switch (option){
+             
+             case 1:
+               visibilityModification();
+               break;
+             case 3:
+               exit = true;
+    }
     
     
     
+    
+    
+    }
+   }
+    
+   public boolean isCreator () {
+       boolean isORnot = false;
+       
+       
+       
+       
+       
+       return isORnot;
+       
+   } 
+   
+   public boolean isVisible () {
+      boolean visibles;
+      visibles = this.visible;
+      if(visibles = false) {
+          System.out.println("La visibilidad del post está desactivada.");
+          return visibles;
+      }
+      else {
+          System.out.println("La visibilidad del post está activada");
+      }
+      return visibles;
+      
+   }
+   
     
 }
