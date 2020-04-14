@@ -192,8 +192,11 @@ public class Post {
          switch (option){
              
              case 1:
-               visibilityModification();
+               contentChange();
                break;
+             //case 2:
+               //postCreation();
+               //break;
              case 3:
                exit = true;
     }
