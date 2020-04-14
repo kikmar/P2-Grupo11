@@ -5,6 +5,7 @@
  */
 package LoginSystem;
 
+import ErrorSystem.CommonMethods;
 import UserSystem.Ban;
 import UserSystem.Users.Student;
 import UserSystem.Users.Teacher;
@@ -25,7 +26,7 @@ import java.util.LinkedList;
  *
  * @author crist
  */
-public class Identifier {
+public class Identifier extends CommonMethods{
     
     //Atributes
     private File Users = new File("DataBase/Users/UsersDataBase.obj");
@@ -54,6 +55,7 @@ public class Identifier {
         }
         else{
             IsRegisterOk = false;
+            showError(0); //mirar clase CommonMethods en paquete ErrorSystem
         }
 
         return IsRegisterOk;
@@ -80,6 +82,7 @@ public class Identifier {
 
                         if(Nick.equals(Ban.getNick())&& Ban.getIsBanned()){
                             IsBanned = true;
+                            showError(1); //mirar clase CommonMethods del paquete ErrorSystem
                             break; 
                         }
                     }   
