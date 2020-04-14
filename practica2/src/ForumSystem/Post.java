@@ -194,9 +194,9 @@ public class Post {
              case 1:
                contentChange();
                break;
-             //case 2:
-               //postCreation();
-               //break;
+               //case 2:
+              //postCreation();
+             //break;
              case 3:
                exit = true;
     }
@@ -224,7 +224,6 @@ public class Post {
       visibles = this.visible;
       if(visibles = false) {
           System.out.println("La visibilidad del post está desactivada.");
-          return visibles;
       }
       else {
           System.out.println("La visibilidad del post está activada");

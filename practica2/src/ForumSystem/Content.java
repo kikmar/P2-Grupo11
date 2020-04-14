@@ -10,5 +10,25 @@ package ForumSystem;
  * @author crist
  */
 public class Content {
+    //Atributos 
+    private String postContent;
+    
+    
+    //Cosntructor
+    
+    public Content (String postContent){
+        this.postContent = postContent;
+    }
+    
+    //Geter y seter
+    
+    public void setPostContent(String postContent){
+        this.postContent = postContent;
+    }
+    
+    public String getPostContent(){
+        return postContent;
+    }
+    
     
 }
