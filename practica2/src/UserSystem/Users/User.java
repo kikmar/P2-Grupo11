@@ -17,6 +17,20 @@ public class User extends Visitor implements Serializable {
   //private Penalizacion Penalizado; fata crear clase Penalización
   //private ListaSuscripciones ListaSubforos falta crear clase ListaSuscripciones
 
+    
+    public User() {
+        //superID);
+        this.Name = Name;
+        this.Surname1 = Surname1;
+        this.Surname2 = Surname2;
+        this.Nick = Nick;
+        this.Email = Email;
+        this.Password = Password;
+        this.IsAdmin = IsAdmin;
+        this.IsStudent = IsStudent;
+        this.IsConected = IsConected;
+    }
+   
     public User(String Name, String Surname1, String Surname2, String Nick, String Email, String Password, boolean IsAdmin, boolean IsStudent, boolean IsConected, int ID) {
         super(ID);
         this.Name = Name;

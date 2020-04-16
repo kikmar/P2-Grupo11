@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ForumSystem;
 
-/**
- *
- * @author crist
- */
+
 
 import ForumSystem.PostContent.Content;
 import UserSystem.Users.User;
 import java.util.Scanner;
 
 
-/**
- *
- * @author crist
- */
+
 public class Post {
     //Atributos
     
@@ -26,7 +15,7 @@ public class Post {
     private Content content;
     private int valoration;
     private boolean visible;
-    private User creator;
+    private String creator; //Lo he creado como string porque creo que es mejor que a que sea usuario para que solo coja el Nick y no contraseña y demases
     private Coment comentList;
     private String voteList;
     private int updates;
@@ -34,7 +23,20 @@ public class Post {
     
     //Constructor de la clase
     
-    public Post (String title, Content content, int valoration, boolean visible,User creator, Coment comentList, String voteList, int updates) {
+    
+    public Post () {
+        this.creator = creator;
+        this.title = title;
+        this.content = content;
+        this.valoration = valoration;
+        this.visible = visible;
+        this.comentList = comentList;
+        this.voteList = voteList;
+        this.updates = updates;
+    }
+    
+    
+    public Post (String title, Content content, int valoration, boolean visible,String creator, Coment comentList, String voteList, int updates) {
         this.creator = creator;
         this.title = title;
         this.content = content;
@@ -76,7 +78,7 @@ public class Post {
         return updates;
     }
     
-    public User getCreator(){
+    public String getCreator(){
         return creator;
     }
     
@@ -111,7 +113,7 @@ public class Post {
         this.updates = updates;
     }        
     
-    public void setCreator (User creator){
+    public void setCreator (String creator){
         this.creator = creator;
     }
     
@@ -141,11 +143,14 @@ public class Post {
        int option;
        
        while (!exit){
-       System.out.println("Se encuentra en el menu de administracion que accion quiere realizar:");
-       System.out.println("1- Cambiar visibilidad del post");
-       System.out.println("2- Penalizar Usuario");
-       System.out.println("3- Salir del menu administrador");       
-       System.out.println("Escribe una de las opciones");
+       System.out.println(" *********************************************************** \n"
+                          +"****************** MENU ADMINISTRADOR ********************* \n"
+                          +"                                                            \n"
+                          +"               1- CAMBIAR VISIBILIDAD DEL POST              \n"
+                          +"               2- PENALIZAR USUARIO                         \n"
+                          +"               3- SALIR                                     \n"
+                          +"                                                            \n"
+                          +"************************************************************\n"); 
        option = sn.nextInt();
          switch (option){
              
@@ -154,8 +159,9 @@ public class Post {
                break;
              case 3:
                exit = true;
-               
-                 
+               break;
+             default:
+               System.out.println("Tipo de dato introducido no valido, introduzca una de las opciones"); 
         
        
          } 
@@ -168,10 +174,32 @@ public class Post {
         System.out.println("¿Desea cambiar algo del contenido de su post?");
         String changes = sc.nextLine();
         
-        if (changes == "si"){
+        if (changes.equals ("si")){
             System.out.println("Escriba su nuevo contenido");
-            String contenido = sc.nextLine();
+            Content content = new Content();
+            content.setPostContentNew();
             
+           // String contenido = añadir fuincion cambiar contenido en clase contenido            
+        }
+    }
+    
+    public void postCreation () {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Desea crear un nuevo post?");
+        String changes = sc.nextLine();
+        
+        if (changes.equals ("si")){
+            System.out.println("Escriba el titulo del post");
+            this.title = sc.nextLine();
+            User user = new User();
+            this.creator = user.getNick();
+            Content content = new Content();
+            content.setPostContent();
+            this.content = content;
+            System.out.println(this.title);
+            System.out.println(this.creator);
+            System.out.println(content.getPostContent());
+                     
         }
     }
     
@@ -184,8 +212,9 @@ public class Post {
        System.out.println(" *********************************************************** \n"
                           +"********************* MENU CREADOR ************************ \n"
                           +"                                                            \n"
-                          +"               1- Modificar post                            \n"
-                          +"               2- Crear post                                \n"
+                          +"               1- MODIFICAR POST                            \n"
+                          +"               2- CREAR NUEVO POST                          \n"
+                          +"               3- Salir                                     \n"
                           +"                                                            \n"
                           +"************************************************************\n");       
        option = sn.nextInt();
@@ -194,11 +223,16 @@ public class Post {
              case 1:
                contentChange();
                break;
-               //case 2:
-              //postCreation();
-             //break;
+             case 2:
+               postCreation();
+               break;
              case 3:
                exit = true;
+               break;
+             default:
+               System.out.println("Tipo de dato introducido no valido, introduzca una de las opciones");
+               
+                    
     }
     
     
@@ -221,9 +255,10 @@ public class Post {
    
    public boolean isVisible () {
       boolean visibles;
-      visibles = this.visible;
+      //visibles = this.visible;
       if(visibles = false) {
-          System.out.println("La visibilidad del post está desactivada.");
+          System.out.println("La visibilidad del post está desactivada");
+          return visibles;
       }
       else {
           System.out.println("La visibilidad del post está activada");
@@ -231,6 +266,9 @@ public class Post {
       return visibles;
       
    }
+   
+  
+   
    
     
 }

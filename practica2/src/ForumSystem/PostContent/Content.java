@@ -1,41 +1,74 @@
-
 package ForumSystem.PostContent;
-
-import ForumSystem.Post;
-import java.util.Scanner;
+import java.util.*;
+//import UserSystem.Users.User;
 
 public class Content {
-    private String PostContent;
-    Scanner sc = new Scanner(System.in);
-    
-    public Content (String PostContent) { 
-        this.PostContent = PostContent;
-        
-}
-    
-    public void setPostContent (String PostContent){
-        this.PostContent = PostContent;
-}
-    
-    public String getPostContent (){
-        return PostContent;
-}
-    
+    private LinkedList<String> postContent = new LinkedList();
+    //private int dimension;
 
-
-public void contentModification (boolean edited) {
+  
+   
+   
     
-    if (edited = false){
+    public void setPostContentNew (){
+        //boolean usuario = true;
+        //if (usuario == true){
+            System.out.println("Introduce el texto que quieres añadir");
+            Scanner sc = new Scanner(System.in);
+            postContent.add(sc.nextLine());
+            System.out.println(postContent);
         
-        System.out.println("El contenido del post no ha sido editado. \n"
-        +"Escriba el contenido que desee que esté modificado: ");
-        String contenido = sc.nextLine();
-        contenido = this.PostContent;
-        edited = true;
-    } else {
-        System.out.println("El contenido del post ha sido editado.");   
+        
+        
+        
+        }
+    
+    
+    public void setPostContent (){
+        //boolean usuario = true;
+        //if (usuario == true){
+            System.out.println("Introduce el texto que quieres añadir");
+            Scanner sc = new Scanner(System.in);
+            postContent.add(sc.nextLine());
+            String option = "si";
+            while (option.equals("si")){
+              System.out.println("¿Quieres añadir otro bloque de texto?");
+              option = sc.nextLine();
+              if (option.equals("si")){
+                System.out.println("Introduce el texto que quieres añadir");
+                postContent.add(sc.nextLine());
+                System.out.println(postContent);
+              }
+              
+            }
+              System.out.println("Se han guardado sus cambios correctamente en la base de datos");
+        
+        }
+    
+    
+    
+    
+    public LinkedList <String> getPostContent (){
+        return postContent;
     }
+       
 }
+        
+ 
+
+    
+    /*Posiblemente se quite al hacer la base de datos
+    public void FillContent(){
+       System.out.println("Rellene el Post");
+       Scanner introContent = new Scanner(System.in);
+       postContent = introContent.nextLine();
+    }
+*/
+
+  
 
 
-} //Final de Clase
+
+
+//} //Final de Clase-
+
