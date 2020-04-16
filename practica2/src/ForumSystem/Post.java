@@ -9,6 +9,11 @@ import java.util.Scanner;
 
 
 public class Post {
+    
+    //Scanner
+    Scanner sc = new Scanner(System.in);
+    
+    
     //Atributos
     
     private String title;
@@ -267,8 +272,36 @@ public class Post {
       
    }
    
-  
+   
+   public void postVote () {
+       System.out.println("Escriba su voto con un 1 para positivo y un 0 para negativo");
+       String response = sc.nextLine();
+       if (response == "1"){
+           boolean b1 = Boolean.parseBoolean(response);
+           if (b1){
+               this.valoration = 1;
+           }
+           else {
+               this.valoration = 0;
+           }
+       }
+       if (response == "0") {
+           boolean b2 = Boolean.parseBoolean(response);
+           if (b2){
+               this.valoration = -1;
+           }
+           else{
+               this.valoration = 0;
+           }
+       }
+      
+       
+       
+   }
    
    
-    
+   
+   
+   
+   
 }
