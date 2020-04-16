@@ -1,5 +1,6 @@
 package practica2mp;
 
+import ForumSystem.Coment;
 import LoginSystem.Identifier;
 import Main.Main;
 import UserSystem.Ban;
@@ -12,7 +13,15 @@ public class Practica2MP {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException, ParseException {
         
-        Main main = new Main();
+        //Main main = new Main();
+        Coment coment = new Coment("Comentario","Cfres");
+        coment.VoteComent("Cfres", true);
+        coment.VoteComent("Cfes", true);
+        coment.VoteComent("Cres", true);
+        coment.VoteComent("Cres", true);
+        coment.VoteComent("Cfres", false);
+
+        
         
         /*
         //Pruebas de Identifier

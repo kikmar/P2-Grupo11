@@ -5,10 +5,122 @@
  */
 package ForumSystem;
 
+import java.util.LinkedList;
+import javafx.util.Pair;
+
 /**
  *
  * @author crist
  */
 public class Coment {
     
+    //Atributes
+    private int valoration;
+    private String Text;
+    private String Nick;
+    
+    private LinkedList <NickVote> ValorantsList = new LinkedList();
+    
+    //Constructor
+    public Coment(String Text, String Nick) {
+        this.Text = Text;
+        this.Nick = Nick;
+        this.valoration = 0;
+    }
+    
+    //Getters
+    public int getValoration() {
+        return valoration;
+    }
+
+    public String getText() {
+        return Text;
+    }
+
+    public String getNick() {
+        return Nick;
+    }
+
+    public LinkedList<NickVote> getValorants() {
+        return ValorantsList;
+    }
+    
+    //Setters
+    public void setValoration(int valoration) {
+        this.valoration = valoration;
+    }
+
+    public void setText(String Text) {
+        this.Text = Text;
+    }
+
+    public void setNick(String Nick) {
+        this.Nick = Nick;
+    }
+
+    public void setValorants(LinkedList<NickVote> Valorants) {
+        this.ValorantsList = Valorants;
+    }
+    
+    //Vote a coment
+    public boolean VoteComent(String Nick, boolean Vote){
+        boolean hasVoted = false;
+        boolean isAllOk = true;
+        
+        NickVote NickVote = new NickVote(Nick,Vote);
+        
+        try{
+            
+            //Check if user has voted
+            for (int i=0; i<ValorantsList.size();i++){
+                if (ValorantsList.get(i).getNick().equals(Nick)){
+                    if (ValorantsList.get(i).isVote() == Vote){
+                        hasVoted = true;
+                        isAllOk = false;
+                    }
+                    
+                    //If he has voted but he want to changue it
+                    else{
+                        if (Vote){
+                            valoration += 2;                       
+                        }
+                        else{
+                            valoration -=2;
+                        }
+                        
+                        ValorantsList.remove(i);
+                        ValorantsList.add(NickVote);
+                    }
+                }  
+            }
+            
+            //If the user never has voted
+            if (!hasVoted){
+                if(Vote){
+                    valoration += 1;
+                }
+                else{
+                    valoration -=1;                    
+                }  
+                ValorantsList.add(NickVote);
+            }    
+        } 
+        
+        //If ValoratansList is empty
+        catch(NullPointerException Npe){
+           if(ValorantsList.size() == 0){
+                if(Vote){
+                    valoration += 1;
+                }
+                else{
+                    valoration -=1;                    
+                }
+                ValorantsList.add(NickVote);    
+            }
+        }
+
+        return isAllOk;
+    }
 }
+
+
