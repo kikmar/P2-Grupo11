@@ -29,11 +29,17 @@ import java.util.LinkedList;
 public class Identifier extends CommonMethods{
     
     //Atributes
-    private File Users = new File("DataBase/Users/UsersDataBase.obj");
-    private File Bans = new File("DataBase/Bans/BansDataBase.obj");
+    private File Users;
+    private File Bans;
     
     //Constructor
-    public Identifier() {   
+    public Identifier(File Users,File Bans) throws IOException {   
+                
+        this.Users = Users;
+        this.Bans = Bans;
+        
+        Users.createNewFile();
+        Bans.createNewFile();
 
     }
     
@@ -57,7 +63,7 @@ public class Identifier extends CommonMethods{
             IsRegisterOk = false;
             showError(0); //mirar clase CommonMethods en paquete ErrorSystem
         }
-
+        
         return IsRegisterOk;
     }
     
@@ -72,7 +78,7 @@ public class Identifier extends CommonMethods{
         for(int i = 0; i<UserList.size();i++){
             User User = (User) UserList.get(i);
               
-            if (User.getEmail().equals(Email) && User.getPassword().equals(Password)){
+            if (User.getEmail().equals(Email) && User.getPassword().equals(Password) && !User.isIsConected()){
                 String Nick = User.getNick();
                 
                 //If found, check if User is banned
@@ -101,7 +107,7 @@ public class Identifier extends CommonMethods{
                     UserList.add(User);
 
                     //Then rewrite the list with the new user    
-                    FileOutputStream OutputFile = new FileOutputStream("DataBase/Users/UsersDataBase.obj");
+                    FileOutputStream OutputFile = new FileOutputStream(Users);
                     ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
                     OutputObject.writeObject(UserList); 
 
@@ -113,7 +119,6 @@ public class Identifier extends CommonMethods{
             } 
  
         }
-          
         return IsLogged;
     }
     
@@ -123,19 +128,18 @@ public class Identifier extends CommonMethods{
         for(int i = 0; i<UserList.size();i++){
             User User = (User) UserList.get(i);
             
-            if (User.getEmail().equals(Email) && User.getPassword().equals(Password)){
+            if (User.getEmail().equals(Email) && User.getPassword().equals(Password) && User.isIsConected()){
                 User.setIsConected(false);
                 
                 UserList.remove(i);
                 UserList.add(User);
                 
                 //Then rewrite the list with the new user    
-                FileOutputStream OutputFile = new FileOutputStream("DataBase/Users/UsersDataBase.obj");
+                FileOutputStream OutputFile = new FileOutputStream(Users);
                 ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
                 OutputObject.writeObject(UserList); 
                 
-                IsLogout = true;
-                
+                IsLogout = true;             
                 break;
             } 
         }
@@ -187,20 +191,18 @@ public class Identifier extends CommonMethods{
         }
         
         //Then rewrite the list with the new user    
-        FileOutputStream OutputFile = new FileOutputStream("DataBase/Users/UsersDataBase.obj");
+        FileOutputStream OutputFile = new FileOutputStream(Users);
         ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
         OutputObject.writeObject(UserList); 
  
         OutputFile.close();
-        OutputObject.close();
-
-        
+        OutputObject.close();   
     }
     
     
     //Returns User List from Data Base
     private LinkedList<User> GetUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
-        FileInputStream InputFile = new FileInputStream("DataBase/Users/UsersDataBase.obj");
+        FileInputStream InputFile = new FileInputStream(Users);
         ObjectInputStream InputObject = new ObjectInputStream(InputFile);
         
         LinkedList <User> UserList  = (LinkedList <User>) InputObject.readObject();

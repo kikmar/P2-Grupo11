@@ -6,6 +6,8 @@
 package ForumSystem;
 
 import UserSystem.Users.User;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -13,5 +15,9 @@ import UserSystem.Users.User;
  */
 public class Forum {
     
+
+    public Forum(){
+        
+    }
     
 }

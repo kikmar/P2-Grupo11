@@ -1,6 +1,7 @@
 package practica2mp;
 
 import LoginSystem.Identifier;
+import Main.Main;
 import UserSystem.Ban;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,31 +12,16 @@ public class Practica2MP {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException, ParseException {
         
+        Main main = new Main();
         
+        /*
         //Pruebas de Identifier
         Identifier Ident = new Identifier();
         
         //Ident.Register("Cristian","De Gracia","Nuero","Cfres","Cristian@urjc.es","1234");
         /*
         //Parameters to create a new user
-        Scanner scanner = new Scanner(System.in); 
-            System.out.println("Enter your Name");
-            String Name = scanner.nextLine(); 
-            
-            System.out.println("Enter yor First Surname");
-            String Surname1 = scanner.nextLine(); 
-            
-            System.out.println("Enter your Second Surname");
-            String Surname2 = scanner.nextLine(); 
-            
-            System.out.println("Enter your Nick");
-            String Nick = scanner.nextLine(); 
-            
-            System.out.println("Enter your Email");
-            String Email = scanner.nextLine(); 
-            
-            System.out.println("Enter your Password");
-            String Password = scanner.nextLine(); 
+       
             
             Ident.Register(Name,Surname1,Surname2,Nick,Email,Password);
             
@@ -63,7 +49,7 @@ public class Practica2MP {
             
             //ban1.Mostrar();
  
-            
+            /*
            Ident.Register("Alberto","Sroda","Gonzalez","Alfres","Alberto@urjc.es","1234");
            Ident.Register("Cristian","De Gracia","Nuero","Cfres","Cristian@urjc.es","1234");
             
@@ -90,7 +76,9 @@ public class Practica2MP {
             else{
                 System.out.println("Error al iniciar sesion");
             }
-
+                    */
+            
+        
     }
     
 }

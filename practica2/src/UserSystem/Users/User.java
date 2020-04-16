@@ -53,7 +53,7 @@ public class User extends Visitor implements Serializable {
     public String getPassword() {
         return Password;
     }
-
+    
     public boolean isIsAdmin() {
         return IsAdmin;
     }
