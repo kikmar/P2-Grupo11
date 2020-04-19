@@ -8,4 +8,6 @@ public class PlainText extends Content {
         super(PostContent);
 }
     
-}//Final de clase 
+    
+    
+}

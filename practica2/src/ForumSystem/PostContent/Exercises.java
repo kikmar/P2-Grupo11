@@ -5,5 +5,5 @@ package ForumSystem.PostContent;
     
     public Exercises (String PostContent) {
         super(PostContent);
-}
+    }
 }

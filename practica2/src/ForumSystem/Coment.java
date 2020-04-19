@@ -15,7 +15,7 @@ import javafx.util.Pair;
 public class Coment {
     
     //Atributes
-    private int valoration;
+    private int Valoration;
     private String Text;
     private String Nick;
     
@@ -25,12 +25,12 @@ public class Coment {
     public Coment(String Text, String Nick) {
         this.Text = Text;
         this.Nick = Nick;
-        this.valoration = 0;
+        this.Valoration = 0;
     }
     
     //Getters
     public int getValoration() {
-        return valoration;
+        return Valoration;
     }
 
     public String getText() {
@@ -47,7 +47,7 @@ public class Coment {
     
     //Setters
     public void setValoration(int valoration) {
-        this.valoration = valoration;
+        this.Valoration = valoration;
     }
 
     public void setText(String Text) {
@@ -82,10 +82,10 @@ public class Coment {
                     //If he has voted but he want to changue it
                     else{
                         if (Vote){
-                            valoration += 2;                       
+                            Valoration += 1;                       
                         }
                         else{
-                            valoration -=2;
+                            Valoration -=1;
                         }
                         
                         ValorantsList.remove(i);
@@ -97,10 +97,10 @@ public class Coment {
             //If the user never has voted
             if (!hasVoted){
                 if(Vote){
-                    valoration += 1;
+                    Valoration += 1;
                 }
                 else{
-                    valoration -=1;                    
+                    Valoration -=1;                    
                 }  
                 ValorantsList.add(NickVote);
             }    
@@ -110,10 +110,10 @@ public class Coment {
         catch(NullPointerException Npe){
            if(ValorantsList.size() == 0){
                 if(Vote){
-                    valoration += 1;
+                    Valoration += 1;
                 }
                 else{
-                    valoration -=1;                    
+                    Valoration -=1;                    
                 }
                 ValorantsList.add(NickVote);    
             }
