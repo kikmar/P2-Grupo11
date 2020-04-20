@@ -1,7 +1,6 @@
 
 package ForumSystem.PostContent;
 
-import java.util.LinkedList;
 
 public class Content {
     private String PostContent;

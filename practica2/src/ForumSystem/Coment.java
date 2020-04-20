@@ -107,7 +107,7 @@ public class Coment {
         
         //If ValoratansList is empty
         catch(NullPointerException Npe){
-           if(ValorantsList.size() == 0){
+           if(ValorantsList.isEmpty()){
                 if(Vote){
                     Valoration += 1;
                 }

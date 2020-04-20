@@ -9,12 +9,15 @@ import ForumSystem.PostContent.Content;
 import ForumSystem.PostContent.Exercises;
 import ForumSystem.PostContent.PlainText;
 import ForumSystem.PostContent.Poll;
+import UserSystem.Ban;
 import UserSystem.Users.User;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.ParseException;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  *
@@ -26,6 +29,38 @@ public class Post {
     private boolean Visibility;
     private String Owner;
     private int Updates;
+
+    public String getTittle() {
+        return Tittle;
+    }
+
+    public void setTittle(String Tittle) {
+        this.Tittle = Tittle;
+    }
+
+    public boolean isVisibility() {
+        return Visibility;
+    }
+
+    public void setVisibility(boolean Visibility) {
+        this.Visibility = Visibility;
+    }
+
+    public String getOwner() {
+        return Owner;
+    }
+
+    public void setOwner(String Owner) {
+        this.Owner = Owner;
+    }
+
+    public int getUpdates() {
+        return Updates;
+    }
+
+    public void setUpdates(int Updates) {
+        this.Updates = Updates;
+    }
     
     private LinkedList <Content> ContentList = new LinkedList();
     private LinkedList <Coment> ComentList = new LinkedList();
@@ -73,6 +108,61 @@ public class Post {
         
         
     }
+    
+    public void MenuAdmin() throws IOException, ClassNotFoundException, ParseException{
+
+    int opcion=0;
+    
+
+    while (opcion!=3){
+        System.out.println("Menu Administrador");
+        System.out.println("1. Cambiar visibilidad del post.");
+        System.out.println("2. Penalizar a un usuario.");
+        System.out.println("3. Salir del Menu Administrador.");
+        System.out.println("Escoja una de las opciones disponibles:");
+        Scanner sc = new Scanner (System.in);
+        opcion = Integer.parseInt(sc.nextLine());
+
+        switch (opcion) {
+            case 1:
+                changeVisibility();
+                break;
+                
+            case 2:
+                Suspend();
+                break;
+                
+            case 3:
+                break;
+
+            default:
+                System.out.println("Esta opción no está disponible");
+                break;
+                
+        }
+    }
+}
+    
+    private void changeVisibility() {
+    if (isVisibility()){
+        setVisibility(false);
+    }
+    else {
+        setVisibility(true);
+    }
+}
+    
+    private void Suspend() throws IOException, ClassNotFoundException, ParseException{
+    System.out.println("Ingrese el Nick del usuario que desea penalizar:");
+    Scanner sc = new Scanner (System.in);
+    String nick = sc.nextLine();
+    System.out.println("Escriba la fecha de inicio de la penalizacion con formato DD-MM-YYYY:");
+    String fechaIni = sc.nextLine();
+    System.out.println("Escriba la fecha de fin de la penalizacion con formato DD-MM-YYYY:");
+    String fechaFin = sc.nextLine();
+
+    Ban penalizacion = new Ban (nick, true, fechaIni, fechaFin);
+}
     
     private boolean CheckIfTeacher(String Owner) throws IOException, FileNotFoundException, ClassNotFoundException{
         boolean isTeacher = true;
@@ -168,7 +258,7 @@ public class Post {
         
         //If ValoratansList is empty
         catch(NullPointerException Npe){
-           if(ValorantsList.size() == 0){
+           if(ValorantsList.isEmpty()){
                 if(Vote){
                     Valoration += 1;
                 }
