@@ -15,7 +15,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -35,7 +38,7 @@ public class Post {
         return Tittle;
     }
 
-    public void setTittle(String Tittle) {
+    public void setTittle(final String Tittle) {
         this.Tittle = Tittle;
     }
 
@@ -43,7 +46,7 @@ public class Post {
         return Visibility;
     }
 
-    public void setVisibility(boolean Visibility) {
+    public void setVisibility(final boolean Visibility) {
         this.Visibility = Visibility;
     }
 
@@ -51,7 +54,7 @@ public class Post {
         return Owner;
     }
 
-    public void setOwner(String Owner) {
+    public void setOwner(final String Owner) {
         this.Owner = Owner;
     }
 
@@ -59,18 +62,19 @@ public class Post {
         return Updates;
     }
 
-    public void setUpdates(int Updates) {
+    public void setUpdates(final int Updates) {
         this.Updates = Updates;
     }
 
-    private LinkedList<Content> ContentList = new LinkedList();
-    private LinkedList<Coment> ComentList = new LinkedList();
-    private LinkedList<NickVote> ValorantsList = new LinkedList();
+    private final LinkedList<Content> ContentList = new LinkedList();
+    private final LinkedList<Coment> ComentList = new LinkedList();
+    private final LinkedList<NickVote> ValorantsList = new LinkedList();
 
-    public Post(String Tittle, String Owner, int TypeOfContent, String PostContent) throws IOException, FileNotFoundException, ClassNotFoundException {
+    public Post(final String Tittle, final String Owner, final int TypeOfContent, final String PostContent)
+            throws IOException, FileNotFoundException, ClassNotFoundException {
 
-        boolean found = CheckIfIsUser(Owner);
-        boolean isTeacher = CheckIfTeacher(Owner);
+        final boolean found = CheckIfIsUser(Owner);
+        final boolean isTeacher = CheckIfTeacher(Owner);
 
         if (found) {
             if (isTeacher) {
@@ -78,28 +82,28 @@ public class Post {
                 if (TypeOfContent == 1) {
                     this.Tittle = Tittle;
                     this.Owner = Owner;
-                    Content C1 = new PlainText(PostContent);
+                    final Content C1 = new PlainText(PostContent);
                     ContentList.add(C1);
                 }
 
                 if (TypeOfContent == 2) {
                     this.Tittle = Tittle;
                     this.Owner = Owner;
-                    Content C2 = new Exercises(PostContent);
+                    final Content C2 = new Exercises(PostContent);
                     ContentList.add(C2);
                 }
 
                 if (TypeOfContent == 3) {
                     this.Tittle = Tittle;
                     this.Owner = Owner;
-                    Content C3 = new Poll(PostContent);
+                    final Content C3 = new Poll(PostContent);
                     ContentList.add(C3);
                 }
             } else {
                 if (TypeOfContent == 1) {
                     this.Tittle = Tittle;
                     this.Owner = Owner;
-                    Content C1 = new PlainText(PostContent);
+                    final Content C1 = new PlainText(PostContent);
                     ContentList.add(C1);
                 }
             }
@@ -107,15 +111,15 @@ public class Post {
 
     }
 
-    public void MenuAdmin(String nicklogeado) throws IOException, ClassNotFoundException, ParseException {
+    public void MenuAdmin(final String nicklogeado) throws IOException, ClassNotFoundException, ParseException {
 
         int opcion;
         boolean exit = false;
         boolean administrador = false;
 
-        LinkedList UserList = GetUserList();
+        final LinkedList UserList = GetUserList();
         for (int i = 0; i < UserList.size(); i++) {
-            User User = (User) UserList.get(i);
+            final User User = (User) UserList.get(i);
 
             if (User.getNick().equals(nicklogeado)) {
                 administrador = User.isIsAdmin();
@@ -132,7 +136,7 @@ public class Post {
                         + "               3- SALIR                                     \n"
                         + "                                                            \n"
                         + "************************************************************\n");
-                Scanner sc = new Scanner(System.in);
+                final Scanner sc = new Scanner(System.in);
                 opcion = Integer.parseInt(sc.nextLine());
 
                 switch (opcion) {
@@ -141,7 +145,14 @@ public class Post {
                         break;
 
                     case 2:
-                        Suspend();
+                        System.out.println("Escriba el nick del usuario a banear:");
+                        String nickToBan = sc.nextLine();
+                        System.out.println("Escriba la fecha de inicio para la penalización en formato DD-MM-YYY:");
+                        String beginDate = sc.nextLine();
+                        System.out.println("Escriba la fecha de fin para la penalización en formato DD-MM-YYY:");
+	                    String endDate = sc.nextLine();
+
+                        Suspend(nickToBan,beginDate,endDate);
                         break;
 
                     case 3:
@@ -157,9 +168,9 @@ public class Post {
     }
 
     private void changeVisibility() {
-        Scanner sc = new Scanner(System.in);
+        final Scanner sc = new Scanner(System.in);
         System.out.println("¿Quiere cambiar la visibilidad del post? si/no");
-        String ask = sc.nextLine();
+        final String ask = sc.nextLine();
         if (ask.equals("si")) {
             this.Visibility = !Visibility;
             System.out.println("Ha cambiado la visibilidad del post");
@@ -169,25 +180,45 @@ public class Post {
         }
     }
 
-    private void Suspend() throws IOException, ClassNotFoundException, ParseException {
-        System.out.println("Ingrese el Nick del usuario que desea penalizar:");
-        Scanner sc = new Scanner(System.in);
-        String nick = sc.nextLine();
-        System.out.println("Escriba la fecha de inicio de la penalizacion con formato DD-MM-YYYY:");
-        String fechaIni = sc.nextLine();
-        System.out.println("Escriba la fecha de fin de la penalizacion con formato DD-MM-YYYY:");
-        String fechaFin = sc.nextLine();
+    private void Suspend(final String nickParaBanear, String fechaIni, String fechaFin) throws IOException, ClassNotFoundException, ParseException {
 
-        Ban penalizacion = new Ban(nick, true, fechaIni, fechaFin);
+        boolean baneado;
+        LinkedList BanList = GetBanList();
+        LinkedList UserList = GetUserList();
+        boolean comprobado = false;
+
+        for (int i = 0; i < BanList.size(); i++) {
+            Ban Ban = (Ban) BanList.get(i);
+
+            if (Ban.getNick().equals(nickParaBanear)) {
+                System.out.println("El usuario ya esta baneado.");
+                comprobado = true;
+            } else {
+                //los dejo por si acaso
+            }
+        }
+        if (!comprobado) {
+            for (int i = 0; i < UserList.size(); i++) {
+                User user = (User) UserList.get(i);
+                
+                if (user.getNick().equals(nickParaBanear)) {
+                    Ban newBan = new Ban (nickParaBanear,true,fechaIni,fechaFin);
+                    BanList.add(newBan);
+                } else {
+                    //los dejo por si acaso
+                }
+            }
+        }
     }
 
-    private boolean CheckIfTeacher(String Owner) throws IOException, FileNotFoundException, ClassNotFoundException {
+    private boolean CheckIfTeacher(final String Owner)
+            throws IOException, FileNotFoundException, ClassNotFoundException {
         boolean isTeacher = true;
 
-        LinkedList UserList = GetUserList();
+        final LinkedList UserList = GetUserList();
 
         for (int i = 0; i < UserList.size(); i++) {
-            User User = (User) UserList.get(i);
+            final User User = (User) UserList.get(i);
 
             if (User.getNick().equals(Owner)) {
                 if (User.isIsStudent()) {
@@ -200,12 +231,13 @@ public class Post {
 
     }
 
-    private boolean CheckIfIsUser(String Owner) throws IOException, FileNotFoundException, ClassNotFoundException {
+    private boolean CheckIfIsUser(final String Owner)
+            throws IOException, FileNotFoundException, ClassNotFoundException {
         boolean found = false;
-        LinkedList UserList = GetUserList();
+        final LinkedList UserList = GetUserList();
 
         for (int i = 0; i < UserList.size(); i++) {
-            User User = (User) UserList.get(i);
+            final User User = (User) UserList.get(i);
 
             if (User.getNick().equals(Owner)) {
                 found = true;
@@ -216,12 +248,12 @@ public class Post {
         return found;
     }
 
-    //Returns User List from Data Base
+    // Returns User List from Data Base
     private LinkedList<User> GetUserList() throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream InputFile = new FileInputStream("DataBase/Users/UsersDataBase.obj");
-        ObjectInputStream InputObject = new ObjectInputStream(InputFile);
+        final FileInputStream InputFile = new FileInputStream("DataBase/Users/UsersDataBase.obj");
+        final ObjectInputStream InputObject = new ObjectInputStream(InputFile);
 
-        LinkedList<User> UserList = (LinkedList<User>) InputObject.readObject();
+        final LinkedList<User> UserList = (LinkedList<User>) InputObject.readObject();
 
         InputFile.close();
         InputObject.close();
@@ -229,21 +261,33 @@ public class Post {
         return UserList;
     }
 
-    public boolean VotePost(String Nick, boolean Vote) {
+    private LinkedList<Ban> GetBanList() throws FileNotFoundException, IOException, ClassNotFoundException {
+        final FileInputStream InputFile = new FileInputStream("DataBase/Users/BansDataBase.obj");
+        final ObjectInputStream InputObject = new ObjectInputStream(InputFile);
+
+        final LinkedList<Ban> BanList = (LinkedList<Ban>) InputObject.readObject();
+
+        InputFile.close();
+        InputObject.close();
+
+        return BanList;
+    }
+
+    public boolean VotePost(final String Nick, final boolean Vote) {
         boolean hasVoted = false;
         boolean isAllOk = true;
 
-        NickVote NickVote = new NickVote(Nick, Vote);
+        final NickVote NickVote = new NickVote(Nick, Vote);
 
         try {
 
-            //Check if user has voted
+            // Check if user has voted
             for (int i = 0; i < ValorantsList.size(); i++) {
                 if (ValorantsList.get(i).getNick().equals(Nick)) {
                     if (ValorantsList.get(i).isVote() == Vote) {
                         hasVoted = true;
                         isAllOk = false;
-                    } //If he has voted but he want to changue it
+                    } // If he has voted but he want to changue it
                     else {
                         if (Vote) {
                             Valoration += 1;
@@ -257,7 +301,7 @@ public class Post {
                 }
             }
 
-            //If the user never has voted
+            // If the user never has voted
             if (!hasVoted) {
                 if (Vote) {
                     Valoration += 1;
@@ -266,8 +310,8 @@ public class Post {
                 }
                 ValorantsList.add(NickVote);
             }
-        } //If ValoratansList is empty
-        catch (NullPointerException Npe) {
+        } // If ValoratansList is empty
+        catch (final NullPointerException Npe) {
             if (ValorantsList.isEmpty()) {
                 if (Vote) {
                     Valoration += 1;
@@ -297,12 +341,12 @@ public class Post {
         return Valoration;
     }
 
-    public void menuCreator(String nicklogeado) {
-        Scanner sn = new Scanner(System.in);
+    public void menuCreator(final String nicklogeado) {
+        final Scanner sn = new Scanner(System.in);
         boolean exit = false;
         int option;
 
-        Post posts = new Post();
+        final Post posts = new Post(); // da error en compilacion por no meter datos
         if (posts.getOwner().equals(nicklogeado)) {
             while (!exit) {
                 System.out.println(" *********************************************************** \n"
@@ -317,10 +361,10 @@ public class Post {
                 switch (option) {
 
                     case 1:
-                        contentChange();
+                        contentChange();//da error en compilacion por no meter datos
                         break;
                     case 2:
-                        postCreation();
+                        postCreation();//da error en compilacion por no meter datos
                         break;
                     case 3:
                         exit = true;
