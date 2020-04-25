@@ -8,13 +8,13 @@ public class SubForum {
    private int ID;
    private Post Pilaposts;
    private String name;
-   private LinkedList<String> subscribersList = new LinkedList();
+   private final LinkedList<String> subscribersList = new LinkedList();
 
     public SubForum(int ID, Post Pilaposts, String name, String subscribersList) {
         this.ID = ID;
         this.Pilaposts = Pilaposts;
         this.name = name;
-        this.subscribersList = subscribersList;
+       
     }
    
 
@@ -32,9 +32,7 @@ public class SubForum {
         this.name = name;
     }
 
-    public void setSubscribersList(String subscribersList) {
-        this.subscribersList = subscribersList;
-    }
+
 
     public int getID() {
         return ID;
@@ -53,7 +51,7 @@ public class SubForum {
     public void suscribe (String nicklogeado){
         boolean subscribed = false;
         for (int i = 0; i < subscribersList.size(); i++) {
-        if (subscribersList(i).equals(nicklogeado)){
+        if (subscribersList.get(i).equals(nicklogeado)){
             System.out.println("Ya estas registrado en este subforo");
             subscribed = true;
         }
@@ -75,11 +73,6 @@ public class SubForum {
     
     }
 
-    private Object subscribersList(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
     
     
     
@@ -95,8 +88,4 @@ mandar notificaciones devuelve integer
 Crear susforo entra por parametro esalumno y nombre tipo string
 
 */
-
-    private Object subscribersList(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
