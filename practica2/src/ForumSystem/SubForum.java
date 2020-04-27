@@ -1,10 +1,12 @@
 package ForumSystem;
 
 import java.util.LinkedList;
+
+import ErrorSystem.CommonMethods;
 import UserSystem.Users.User;
 
 
-public class SubForum {
+public class SubForum extends CommonMethods{
 
    private int ID;
    private Post Pilaposts;
@@ -106,5 +108,11 @@ desuscribirse entra nick -------- ya ta
 mandar notificaciones devuelve integer --------- 
 Crear susforo entra por parametro esalumno y nombre tipo string -------
 
+
+NOTA DE AITOR:
+Cuando hagais el metodo de CrearSubforo, 
+en la condicion que diga que no puede crearlo hay que escribir esto:
+showError(2);
+para que muestre el error de que no es posible crear un subforo sin los permisos necesarios
 */
 

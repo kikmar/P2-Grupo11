@@ -22,11 +22,13 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import ErrorSystem.CommonMethods;
+
 /**
  *
  * @author crist
  */
-public class Post {
+public class Post extends CommonMethods{
 
     private String Tittle;
     private int Valoration;
@@ -160,6 +162,9 @@ public class Post {
 
                 }
             }
+        }
+        else {
+            showError(3);
         }
     }
 
