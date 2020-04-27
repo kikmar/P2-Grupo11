@@ -32,7 +32,7 @@ public class Post {
     private int Valoration;
     private boolean Visibility;
     private String Owner;
-    private int Updates;
+     
 
     public String getTittle() {
         return Tittle;
@@ -58,13 +58,9 @@ public class Post {
         this.Owner = Owner;
     }
 
-    public int getUpdates() {
-        return Updates;
-    }
+   
+    
 
-    public void setUpdates(final int Updates) {
-        this.Updates = Updates;
-    }
 
     private final LinkedList<Content> ContentList = new LinkedList();
     private final LinkedList<Coment> ComentList = new LinkedList();

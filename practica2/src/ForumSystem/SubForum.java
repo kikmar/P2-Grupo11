@@ -1,6 +1,7 @@
 package ForumSystem;
 
 import java.util.LinkedList;
+import UserSystem.Users.User;
 
 
 public class SubForum {
@@ -50,6 +51,7 @@ public class SubForum {
     
     public void suscribe (String nicklogeado){
         boolean subscribed = false;
+        final User user = new User();
         for (int i = 0; i < subscribersList.size(); i++) {
         if (subscribersList.get(i).equals(nicklogeado)){
             System.out.println("Ya estas registrado en este subforo");
@@ -59,33 +61,50 @@ public class SubForum {
         if (subscribed == false){
             subscribersList.add(nicklogeado);
             System.out.println("Acabas de subscribirse");
+            user.notificationAdd(name,Pilaposts.size() );    //Sacamos el tamaño de la pilaposts que falta para las notificicaiones
             
+            
+        }       
+    }
+    
+    public void unsubscribe (String nicklogeado){
+        boolean subscribed = false;
+        final User user = new User();
+        for (int i = 0; i < subscribersList.size(); i++) {
+        if (subscribersList.get(i).equals(nicklogeado)){
+            subscribed = true;
         }
-        
-        
+        }
+        if (subscribed == false){
+            System.out.println("No estas subscrito a este Subforo");
+            
+        } 
+        else {
+            subscribersList.remove("nicklogeado");
+            user.notificationRemove(name);
+            System.out.println("Se ha desubscrito del Subforo con exito");
             
         
+        }
+    }
     
-    
-    
+    public void sendNotifications (){
+        
     
     
     
     }
-
-    
-    
     
    
    
    
 }
 /*
-Suscribirse parametro nick
-get id devuelve integer
-desuscribirse entra nick
-mandar notificaciones devuelve integer
-Crear susforo entra por parametro esalumno y nombre tipo string
+Suscribirse parametro nick --------ya ta
+get id devuelve integer --------- ya ta
+desuscribirse entra nick -------- ya ta
+mandar notificaciones devuelve integer --------- 
+Crear susforo entra por parametro esalumno y nombre tipo string -------
 
 */
 
