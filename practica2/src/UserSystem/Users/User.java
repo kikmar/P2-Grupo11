@@ -32,7 +32,9 @@ public class User extends Visitor implements Serializable {
         this.IsStudent = IsStudent;
         this.IsConected = false;
     }
-
+    
+    
+    //Getters
     public String getName() {
         return Name;
     }
@@ -74,7 +76,7 @@ public class User extends Visitor implements Serializable {
     }
     
     
-
+    //Setters
     public void setName(String Name) {
         this.Name = Name;
     }
@@ -111,6 +113,8 @@ public class User extends Visitor implements Serializable {
         this.IsConected = IsConected;
     }
 
+    
+    //Methods
     public String toString(){
         return "Name: "+Name+" . Surname1: "+Surname1+" . Surname2: "+Surname2+
                 " . Nick: "+ Nick+" . Password: "+ Password+" . Email: "+Email+

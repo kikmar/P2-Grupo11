@@ -5,7 +5,6 @@
  */
 package LoginSystem;
 
-import ErrorSystem.CommonMethods;
 import UserSystem.Ban;
 import UserSystem.Users.Student;
 import UserSystem.Users.Teacher;
@@ -26,13 +25,11 @@ import java.util.LinkedList;
  *
  * @author crist
  */
-public class Identifier extends CommonMethods{
+public class Identifier{
     
-    //Atributes
     private File Users;
     private File Bans;
     
-    //Constructor
     public Identifier(File Users,File Bans) throws IOException {   
                 
         this.Users = Users;
@@ -43,27 +40,30 @@ public class Identifier extends CommonMethods{
 
     }
 
-
-    //Register a user in to User´s file
+    //Methods
     public boolean Register(String Name,String Surname1,String Surname2,String Nick,String Email,String Password) throws IOException, FileNotFoundException, ClassNotFoundException{
-        boolean IsRegisterOk = true;
-       
-        //Parameters validation
-        if (isPersonalFromUrjc(Email)){
-            
-            if (isStudentOrTeacher(Email)){
-                User Student = new User(Name,Surname1,Surname2,Nick,Email,Password,true,0);
-                WriteDataToDataBase(Student);    
-            } 
-            else{
-                User Teacher = new Teacher(Name,Surname1,Surname2, Nick, Email, Password,false,0);
-                WriteDataToDataBase(Teacher);
+        boolean IsRegisterOk = false;
+        
+        if(!AlreadyExists(Email)){
+           //Parameters validation
+            if (isPersonalFromUrjc(Email)){
+
+                if (isStudentOrTeacher(Email)){
+                    User Student = new Student(Name,Surname1,Surname2,Nick,Email,Password,true,0);
+                    WriteDataToDataBase(Student);    
+                } 
+                else{
+                    User Teacher = new Teacher(Name,Surname1,Surname2, Nick, Email, Password,false,0);
+                    WriteDataToDataBase(Teacher);
+                }
+
+                IsRegisterOk = true;
             }
+            else{
+                IsRegisterOk = false;
+            } 
         }
-        else{
-            IsRegisterOk = false;
-            showError(0); //mirar clase CommonMethods en paquete ErrorSystem
-        }
+        
         
         return IsRegisterOk;
     }
@@ -89,7 +89,6 @@ public class Identifier extends CommonMethods{
 
                         if(Nick.equals(Ban.getNick())&& Ban.getIsBanned()){
                             IsBanned = true;
-                            showError(1); //mirar clase CommonMethods del paquete ErrorSystem
                             break; 
                         }
                     }   
@@ -148,7 +147,6 @@ public class Identifier extends CommonMethods{
  
     }
 
-    //Check if it´s a student´s email or teacher´s email
     private boolean isStudentOrTeacher(String Email){
         boolean isStudent = true;
         int emailType = Email.indexOf("@alumnos.urjc.es");
@@ -160,7 +158,6 @@ public class Identifier extends CommonMethods{
         return isStudent;
     }
     
-    //Check if it´s an email from URJC
     private boolean isPersonalFromUrjc(String Email){
         boolean isFromUrjc = true;
         int emailType1 = Email.indexOf("@alumnos.urjc.es");
@@ -173,7 +170,6 @@ public class Identifier extends CommonMethods{
   
     }
     
-    //Write User in to User´s file
     private void WriteDataToDataBase(User CreatedUser) throws IOException, ClassNotFoundException{ 
         LinkedList <User> UserList  = new LinkedList();
         //Check if there are more user´s in the file
@@ -200,21 +196,23 @@ public class Identifier extends CommonMethods{
         OutputObject.close();   
     }
     
-    
-    //Returns User List from Data Base
     private LinkedList<User> GetUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
-        FileInputStream InputFile = new FileInputStream(Users);
-        ObjectInputStream InputObject = new ObjectInputStream(InputFile);
-        
-        LinkedList <User> UserList  = (LinkedList <User>) InputObject.readObject();
-        
-        InputFile.close();
-        InputObject.close();
-        
-        return UserList;
+        try{
+            FileInputStream InputFile = new FileInputStream(Users);
+            ObjectInputStream InputObject = new ObjectInputStream(InputFile);
+
+            LinkedList <User> UserList  = (LinkedList <User>) InputObject.readObject();
+
+            InputFile.close();
+            InputObject.close();
+
+            return UserList;
+        }
+        catch (EOFException e){
+         return null;  
+       }   
     }
     
-    //Returns Ban List from Data Base
     private LinkedList<Ban> GetBanList() throws FileNotFoundException, IOException, ClassNotFoundException{
        Bans.createNewFile();
        try{
@@ -234,18 +232,20 @@ public class Identifier extends CommonMethods{
         
     }
     
-    ///////////////////////////////////////////////////////////////////////////////////////
-    public void Mostrar() throws FileNotFoundException, IOException, ClassNotFoundException{
-        FileInputStream InputFile = new FileInputStream("DataBase/Users/UsersDataBase.obj");
-        ObjectInputStream InputObject = new ObjectInputStream(InputFile);
+    private boolean AlreadyExists(String Email) throws IOException, FileNotFoundException, ClassNotFoundException{
+        boolean Exists = false;
+        LinkedList <User> UserList = GetUserList();
+        if(UserList!=null){
+           for (int i=0; i<UserList.size();i++){
+                User User = UserList.get(i);
+
+                if(User.getEmail().equals(Email)){
+                    Exists = true;
+                }
+            } 
+        }        
         
-        LinkedList <User> UserList  = (LinkedList <User>) InputObject.readObject();
-        InputFile.close();
-        InputObject.close();
-        for(int i = 0; i<UserList.size();i++){
-            System.out.println(UserList.get(i).toString());
-        }
+        return Exists;
     }
     
-  
 }

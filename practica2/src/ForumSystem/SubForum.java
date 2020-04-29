@@ -30,7 +30,9 @@ public class SubForum implements Serializable {
    public SubForum(String SubForumName) {
         this.SubForumName = SubForumName; 
     }
-
+   
+   
+    //Getters
     public String getSubForumName() {
         return SubForumName;
     }
@@ -38,10 +40,26 @@ public class SubForum implements Serializable {
     public LinkedList<Post> getPostsList(){
         return PostsList;
     }
+
+    public LinkedList<String> getSubscribersList() {
+        return SubscribersList;
+    }
     
     
-   
-   
+    //Setters
+    public void setSubForumName(String SubForumName) {
+        this.SubForumName = SubForumName;
+    }
+
+    public void setSubscribersList(LinkedList<String> SubscribersList) {
+        this.SubscribersList = SubscribersList;
+    }
+
+    public void setPostsList(LinkedList<Post> PostsList) {
+        this.PostsList = PostsList;
+    }
+    
+   //Methods
    public void Suscribe (String Nick){
         boolean Subscribed = false;
 
@@ -53,8 +71,7 @@ public class SubForum implements Serializable {
         }
         if (Subscribed == false){
             SubscribersList.add(Nick);
-            System.out.println("Subscription done");
-                       
+            System.out.println("Subscription done");               
         }       
     }
    
@@ -99,9 +116,7 @@ public class SubForum implements Serializable {
                         UserList.remove(i);
                         UserList.add(User);
                     }  
-                    
                 }
-                
                 catch(IndexOutOfBoundsException IOOBE){
                     
                 }
@@ -116,8 +131,7 @@ public class SubForum implements Serializable {
        return PostCreated; 
     }
     
-    // Returns User List from Data Base
-    private LinkedList<User> GetUserList() throws FileNotFoundException, IOException, ClassNotFoundException {
+   private LinkedList<User> GetUserList() throws FileNotFoundException, IOException, ClassNotFoundException {
         final FileInputStream InputFile = new FileInputStream("DataBase/Users/UsersDataBase.obj");
         final ObjectInputStream InputObject = new ObjectInputStream(InputFile);
 

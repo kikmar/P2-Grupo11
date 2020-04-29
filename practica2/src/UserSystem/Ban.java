@@ -2,7 +2,6 @@ package UserSystem;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -42,8 +41,9 @@ public class Ban implements Serializable{
         this.endDate = endDateConvert;
         
         WriteDataToDataBase(this);
-    }     
-
+    }   
+    
+    //Getters
     public String getNick() {
         return Nick;
     }
@@ -64,10 +64,8 @@ public class Ban implements Serializable{
         return Bans;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
+    
+    //Setters
     public void setNick(String Nick) {
         this.Nick = Nick;
     }
@@ -88,7 +86,7 @@ public class Ban implements Serializable{
         this.Bans = Bans;
     }
 
-     //Write User in to User´s file
+    //Methods
     private void WriteDataToDataBase(Ban CreatedBan) throws IOException, ClassNotFoundException{ 
         LinkedList <Ban> BanList  = new LinkedList();
         //Check if there are more user´s in the file
@@ -116,20 +114,6 @@ public class Ban implements Serializable{
 
     }
     
-    ////////////////////////////////////////////////////////////////////////////
-    public void Mostrar() throws FileNotFoundException, IOException, ClassNotFoundException{
-        FileInputStream InputFile = new FileInputStream(Bans);
-        ObjectInputStream InputObject = new ObjectInputStream(InputFile);
-        
-        LinkedList <Ban> BanList  = (LinkedList <Ban>) InputObject.readObject();
-        InputFile.close();
-        InputObject.close();
-        for(int i = 0; i<BanList.size();i++){
-            System.out.println(BanList.get(i).toString());
-        }
-    }
-    
-    @Override
     public String toString() {
         
         SimpleDateFormat beginDateDate = new SimpleDateFormat("yyyy/MM/dd");
@@ -138,13 +122,8 @@ public class Ban implements Serializable{
         SimpleDateFormat endDateDate = new SimpleDateFormat("yyyy/MM/dd");
         String endDateStr = endDateDate.format(endDate);
         
-        
-        
         return "Nick: " + Nick + " . BeginDate: " + beginDateStr + " . endDate: " + endDateStr
                 + " . IsBanned= " + isBanned;
     }
-    
-    
-    
-    
+  
 }

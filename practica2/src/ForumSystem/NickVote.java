@@ -13,13 +13,12 @@ import java.io.Serializable;
  */
 public class NickVote implements Serializable{
     
-    //Atributes
+
     private String Nick;
     private boolean Vote;
     
     private static final long serialVersionUID = 1L;
     
-    //Constructor
     public NickVote(String Nick, boolean Vote) {
         this.Nick = Nick;
         this.Vote = Vote;
@@ -34,6 +33,7 @@ public class NickVote implements Serializable{
         return Vote;
     }
     
+    
     //Setters
     public void setNick(String Nick) {
         this.Nick = Nick;
@@ -43,6 +43,11 @@ public class NickVote implements Serializable{
         this.Vote = Vote;
     }
     
+    
+    //Methods
+    public String toString(){
+        return "Nick: "+Nick+" Vote: "+Vote;
+    }
     
     
 }

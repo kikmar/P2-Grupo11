@@ -2,7 +2,6 @@
 package ForumSystem.PostContent;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 
 public class Content implements Serializable {
     private String PostContent;
@@ -12,16 +11,21 @@ public class Content implements Serializable {
         
     }
     
+    //Getters
     public void setPostContent (String PostContent){
         this.PostContent = PostContent;
     }
     
+    
+    //Setters
     public String getPostContent (){
         return PostContent;
     }
     
  
-
+    public String toString(){
+        return PostContent;
+    }
     
 
 } 
