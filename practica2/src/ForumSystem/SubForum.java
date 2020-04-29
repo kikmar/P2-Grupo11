@@ -1,118 +1,137 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ForumSystem;
 
+import UserSystem.Users.User;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.LinkedList;
 
-import ErrorSystem.CommonMethods;
-import UserSystem.Users.User;
-
-
-public class SubForum extends CommonMethods{
-
-   private int ID;
-   private Post Pilaposts;
-   private String name;
-   private final LinkedList<String> subscribersList = new LinkedList();
-
-    public SubForum(int ID, Post Pilaposts, String name, String subscribersList) {
-        this.ID = ID;
-        this.Pilaposts = Pilaposts;
-        this.name = name;
-       
-    }
+/**
+ *
+ * @author crist
+ */
+public class SubForum implements Serializable {
+   private String SubForumName;
    
+   private LinkedList<String> SubscribersList = new LinkedList();
+   private LinkedList<Post> PostsList = new LinkedList();
+   
+   private static final long serialVersionUID = 1L;
+   
+   public SubForum(String SubForumName) {
+        this.SubForumName = SubForumName; 
+    }
 
+    public String getSubForumName() {
+        return SubForumName;
+    }
+
+    public LinkedList<Post> getPostsList(){
+        return PostsList;
+    }
+    
     
    
-   public void setID(int ID) {
-        this.ID = ID;
-    }
+   
+   public void Suscribe (String Nick){
+        boolean Subscribed = false;
 
-    public void setPilaposts(Post Pilaposts) {
-        this.Pilaposts = Pilaposts;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-
-    public int getID() {
-        return ID;
-    }
-
-    public Post getPilaposts() {
-        return Pilaposts;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    
-    
-    public void suscribe (String nicklogeado){
-        boolean subscribed = false;
-        final User user = new User();
-        for (int i = 0; i < subscribersList.size(); i++) {
-        if (subscribersList.get(i).equals(nicklogeado)){
-            System.out.println("Ya estas registrado en este subforo");
-            subscribed = true;
+        for (int i = 0; i < SubscribersList.size(); i++) {
+            if (SubscribersList.get(i).equals(Nick)){
+                System.out.println("Already suscribed");
+                Subscribed = true;
+            }
         }
-        }
-        if (subscribed == false){
-            subscribersList.add(nicklogeado);
-            System.out.println("Acabas de subscribirse");
-            user.notificationAdd(name,Pilaposts.size() );    //Sacamos el tamaño de la pilaposts que falta para las notificicaiones
-            
-            
+        if (Subscribed == false){
+            SubscribersList.add(Nick);
+            System.out.println("Subscription done");
+                       
         }       
     }
-    
-    public void unsubscribe (String nicklogeado){
-        boolean subscribed = false;
-        final User user = new User();
-        for (int i = 0; i < subscribersList.size(); i++) {
-        if (subscribersList.get(i).equals(nicklogeado)){
-            subscribed = true;
+   
+   public void Unsubscribe (String Nick){
+        boolean Subscribed = false;
+        int Position = -1;
+        
+        for (int i = 0; i < SubscribersList.size(); i++) {
+            if (SubscribersList.get(i).equals(Nick)){
+                Subscribed = true;
+                Position = i;
+            }
         }
-        }
-        if (subscribed == false){
-            System.out.println("No estas subscrito a este Subforo");
-            
+        
+        if (Subscribed){
+            SubscribersList.remove(Position);
+            System.out.println("Unsusbription done");  
         } 
-        else {
-            subscribersList.remove("nicklogeado");
-            user.notificationRemove(name);
-            System.out.println("Se ha desubscrito del Subforo con exito");
-            
         
+        else {
+            System.out.println("Already unsuscribed");  
         }
     }
+   
+   public boolean CreatePost(String Tittle,String Owner, int TypeOfContent, String PostContent) throws IOException, FileNotFoundException, ClassNotFoundException{
+        boolean PostCreated = false; 
+       
+        Post Post = new Post(Tittle,Owner,TypeOfContent,PostContent);
+        if (Post.getValid() !=-1){
+            PostCreated = true;
+            PostsList.add(Post);
+            
+            Notification Notification = new Notification("New post has been created in"+this.SubForumName,false);
+            
+            LinkedList <User> UserList = GetUserList();
+            for (int i=0; i<UserList.size();i++){
+                User User = (User) UserList.get(i);
+                
+                try{
+                    if(SubscribersList.get(i).equals(User.getNick())){
+                        User.getNotificationsList().add(Notification);
+                        UserList.remove(i);
+                        UserList.add(User);
+                    }  
+                    
+                }
+                
+                catch(IndexOutOfBoundsException IOOBE){
+                    
+                }
+                
+            }
+            
+            //Then rewrite the list with the new user    
+            FileOutputStream OutputFile = new FileOutputStream("DataBase/Users/UsersDataBase.obj");
+            ObjectOutputStream OutputObject = new ObjectOutputStream(OutputFile);
+            OutputObject.writeObject(UserList); 
+        }
+       return PostCreated; 
+    }
     
-    public void sendNotifications (){
-        
+    // Returns User List from Data Base
+    private LinkedList<User> GetUserList() throws FileNotFoundException, IOException, ClassNotFoundException {
+        final FileInputStream InputFile = new FileInputStream("DataBase/Users/UsersDataBase.obj");
+        final ObjectInputStream InputObject = new ObjectInputStream(InputFile);
+
+        final LinkedList<User> UserList = (LinkedList<User>) InputObject.readObject();
+
+        InputFile.close();
+        InputObject.close();
+
+        return UserList;
+    }
     
-    
+   public String toString(){
+        return "SubForumName: "+SubForumName;
     
     }
     
-   
-   
-   
 }
-/*
-Suscribirse parametro nick --------ya ta
-get id devuelve integer --------- ya ta
-desuscribirse entra nick -------- ya ta
-mandar notificaciones devuelve integer --------- 
-Crear susforo entra por parametro esalumno y nombre tipo string -------
-
-
-NOTA DE AITOR:
-Cuando hagais el metodo de CrearSubforo, 
-en la condicion que diga que no puede crearlo hay que escribir esto:
-showError(2);
-para que muestre el error de que no es posible crear un subforo sin los permisos necesarios
-*/
-

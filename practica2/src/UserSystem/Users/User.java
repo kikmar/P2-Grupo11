@@ -1,9 +1,8 @@
 package UserSystem.Users;
-import ForumSystem.PostContent.Content;
+import ForumSystem.Notification;
 import UserSystem.Visitor;
 import java.io.Serializable;
 import java.util.LinkedList;
-import ForumSystem.Notification;
 
 public class User extends Visitor implements Serializable {
     private String Name;
@@ -15,25 +14,13 @@ public class User extends Visitor implements Serializable {
     private boolean IsAdmin; 
     private boolean IsStudent;
     private boolean IsConected;
-    private final LinkedList<Notification> notificationsContent = new LinkedList(); //Lo creo para notifications y como si fuera Listasubscriptiones en nuestro esquema
     
+    private LinkedList <Notification> notificationsList = new LinkedList();
     private static final long serialVersionUID = 1L;
   //private Penalizacion Penalizado; fata crear clase Penalización
+  //private ListaSuscripciones ListaSubforos falta crear clase ListaSuscripciones
 
-    public User() {                                //BOrrar desspues 
-       // super(ID);                                // ///////////////////////////////////////////////
-        this.Name = Name;
-        this.Surname1 = Surname1;
-        this.Surname2 = Surname2;
-        this.Nick = Nick;
-        this.Email = Email;
-        this.Password = Password;
-        this.IsAdmin = IsAdmin;
-        this.IsStudent = IsStudent;
-        this.IsConected = IsConected;
-    }
-    
-    public User(String Name, String Surname1, String Surname2, String Nick, String Email, String Password, boolean IsAdmin, boolean IsStudent, boolean IsConected, int ID) {
+    public User(String Name, String Surname1, String Surname2, String Nick, String Email, String Password, boolean IsStudent, int ID) {
         super(ID);
         this.Name = Name;
         this.Surname1 = Surname1;
@@ -41,9 +28,9 @@ public class User extends Visitor implements Serializable {
         this.Nick = Nick;
         this.Email = Email;
         this.Password = Password;
-        this.IsAdmin = IsAdmin;
+        this.IsAdmin = false;
         this.IsStudent = IsStudent;
-        this.IsConected = IsConected;
+        this.IsConected = false;
     }
 
     public String getName() {
@@ -81,6 +68,12 @@ public class User extends Visitor implements Serializable {
     public boolean isIsConected() {
         return IsConected;
     }
+
+    public LinkedList<Notification> getNotificationsList() {
+        return notificationsList;
+    }
+    
+    
 
     public void setName(String Name) {
         this.Name = Name;
@@ -125,21 +118,6 @@ public class User extends Visitor implements Serializable {
     
     }
     
-    public void notificationAdd (String names, int read){
-        notificationsContent.add(new Notification("names",read));
-    }
     
-     public void notificationRemove (String names){
-        int x =0;
-        Notification notification = new Notification();
-         for (int i = 0; i < notificationsContent.size(); i++) {
-             if (notification.getName().equals(names)) {
-                  x = i;
-                 
-             }
-         
-         }
-        notificationsContent.remove(x);
-    }
         
 }

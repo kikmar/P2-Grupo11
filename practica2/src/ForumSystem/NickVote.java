@@ -5,15 +5,19 @@
  */
 package ForumSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author crist
  */
-public class NickVote {
+public class NickVote implements Serializable{
     
     //Atributes
     private String Nick;
     private boolean Vote;
+    
+    private static final long serialVersionUID = 1L;
     
     //Constructor
     public NickVote(String Nick, boolean Vote) {

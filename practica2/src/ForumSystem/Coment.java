@@ -5,13 +5,15 @@
  */
 package ForumSystem;
 
+import java.io.Serializable;
 import java.util.LinkedList;
+import javafx.util.Pair;
 
 /**
  *
  * @author crist
  */
-public class Coment {
+public class Coment implements Serializable{
     
     //Atributes
     private int Valoration;
@@ -19,9 +21,9 @@ public class Coment {
     private String Nick;
     
     private LinkedList <NickVote> ValorantsList = new LinkedList();
-    
+    private static final long serialVersionUID = 1L;
     //Constructor
-    public Coment(String Text, String Nick) {
+    public Coment(String Nick, String Text) {
         this.Text = Text;
         this.Nick = Nick;
         this.Valoration = 0;
@@ -107,7 +109,7 @@ public class Coment {
         
         //If ValoratansList is empty
         catch(NullPointerException Npe){
-           if(ValorantsList.isEmpty()){
+           if(ValorantsList.size() == 0){
                 if(Vote){
                     Valoration += 1;
                 }
@@ -119,6 +121,10 @@ public class Coment {
         }
 
         return isAllOk;
+    }
+    
+    public String toString(){
+        return "Nick: "+Nick+" Comment: "+Text+" Valoration: "+Valoration;
     }
 }
 

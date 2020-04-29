@@ -42,7 +42,8 @@ public class Identifier extends CommonMethods{
         Bans.createNewFile();
 
     }
-    
+
+
     //Register a user in to User´s file
     public boolean Register(String Name,String Surname1,String Surname2,String Nick,String Email,String Password) throws IOException, FileNotFoundException, ClassNotFoundException{
         boolean IsRegisterOk = true;
@@ -51,11 +52,11 @@ public class Identifier extends CommonMethods{
         if (isPersonalFromUrjc(Email)){
             
             if (isStudentOrTeacher(Email)){
-                User Student = new Student(Name,Surname1,Surname2,Nick,Email,Password,false, true,false,0);
+                User Student = new User(Name,Surname1,Surname2,Nick,Email,Password,true,0);
                 WriteDataToDataBase(Student);    
             } 
             else{
-                User Teacher = new Teacher(Name,Surname1,Surname2, Nick, Email, Password,false,false,false,0);
+                User Teacher = new Teacher(Name,Surname1,Surname2, Nick, Email, Password,false,0);
                 WriteDataToDataBase(Teacher);
             }
         }

@@ -25,21 +25,21 @@ public class Main {
     public Main() throws IOException, FileNotFoundException, ClassNotFoundException {
         
         //Objects initialization
-        Forum forum = new Forum();
-        Identifier ident = new Identifier(Users,Bans);
+        Forum Forum = new Forum();
+        Identifier Ident = new Identifier(Users,Bans);
         
         
-        int option = 0;
-        while(option !=-1){
+        int Option = 0;
+        while(Option !=-1){
             
             MenuForo();
             
             Scanner scanner = new Scanner(System.in);     
-            option = scanner.nextInt();  
+            Option = scanner.nextInt();  
         
-            switch(option) {
+            switch(Option) {
                 case 1:
-                    if(Register(ident)){
+                    if(Register(Ident)){
                         System.out.println("Register completed");
                     } 
                     else{
@@ -47,7 +47,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    if(Login(ident)){
+                    if(Login(Ident)){
                         System.out.println("Login completed");
                     } 
                     else{
@@ -56,7 +56,7 @@ public class Main {
 
                     break;
                 case 3:
-                    if(Logout(ident)){
+                    if(Logout(Ident)){
                         System.out.println("Logout completed");
                     } 
                     else{
