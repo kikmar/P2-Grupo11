@@ -39,8 +39,8 @@ public class TeacherTest {
 
     @Test
     public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Teacher profesor1 = new Teacher("Antonio", "Garcia", "Pardo", "gpardo", "ag.pardo@urjc.es", "5678", false, "294892");
+        assertNotNull(profesor1);
     }
     
 }
