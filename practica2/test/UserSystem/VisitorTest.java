@@ -42,13 +42,8 @@ public class VisitorTest {
      */
     @Test
     public void testGetID() {
-        System.out.println("getID");
-        Visitor instance = null;
-        int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Visitor visitor = new Visitor(12345);
+        assertEquals(visitor.getID(),12345);
     }
 
     /**
@@ -56,12 +51,9 @@ public class VisitorTest {
      */
     @Test
     public void testSetID() {
-        System.out.println("setID");
-        int ID = 0;
-        Visitor instance = null;
-        instance.setID(ID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Visitor visitor = new Visitor();
+        visitor.setID(12345);
+        assertNotNull(visitor.getID());
     }
     
 }

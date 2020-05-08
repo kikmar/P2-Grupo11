@@ -44,13 +44,9 @@ public class BanTest {
      */
     @Test
     public void testGetNick() {
-        System.out.println("getNick");
-        Ban instance = null;
-        String expResult = "";
-        String result = instance.getNick();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
+        final String nick = "elqueaprueba";
+        assertEquals(nick, ban.getNick());
     }
 
     /**
@@ -58,13 +54,8 @@ public class BanTest {
      */
     @Test
     public void testGetIsBanned() {
-        System.out.println("getIsBanned");
-        Ban instance = null;
-        boolean expResult = false;
-        boolean result = instance.getIsBanned();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
+        assertEquals(ban.getIsBanned(), true);
     }
 
     /**
@@ -72,13 +63,9 @@ public class BanTest {
      */
     @Test
     public void testGetBeginDate() {
-        System.out.println("getBeginDate");
-        Ban instance = null;
-        Date expResult = null;
-        Date result = instance.getBeginDate();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
+        final String beginDate = "01-05-2020";
+        assertEquals(ban.getBeginDate(), beginDate);
     }
 
     /**
@@ -86,13 +73,9 @@ public class BanTest {
      */
     @Test
     public void testGetEndDate() {
-        System.out.println("getEndDate");
-        Ban instance = null;
-        Date expResult = null;
-        Date result = instance.getEndDate();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
+        final String endDate = "01-06-2020";
+        assertEquals(ban.getEndDate(), endDate);
     }
 
     /**
@@ -100,13 +83,8 @@ public class BanTest {
      */
     @Test
     public void testGetBans() {
-        System.out.println("getBans");
-        Ban instance = null;
-        File expResult = null;
-        File result = instance.getBans();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        File Bans = new File("DataBase/Bans/BansDataBase.obj");
+        assertNotNull(Bans);
     }
 
     /**
@@ -114,12 +92,9 @@ public class BanTest {
      */
     @Test
     public void testSetNick() {
-        System.out.println("setNick");
-        String Nick = "";
-        Ban instance = null;
-        instance.setNick(Nick);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban();
+        ban.setNick("elqueaprueba");
+        assertNotNull(ban.getNick());
     }
 
     /**
@@ -127,12 +102,9 @@ public class BanTest {
      */
     @Test
     public void testSetIsBanned() {
-        System.out.println("setIsBanned");
-        boolean isBanned = false;
-        Ban instance = null;
-        instance.setIsBanned(isBanned);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban();
+        ban.setIsBanned(true);
+        assertNotNull(ban.getIsBanned());
     }
 
     /**
@@ -140,12 +112,9 @@ public class BanTest {
      */
     @Test
     public void testSetBeginDate() {
-        System.out.println("setBeginDate");
-        Date beginDate = null;
-        Ban instance = null;
-        instance.setBeginDate(beginDate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban();
+        ban.setBeginDate("01-05-2020");
+        assertNotNull(ban.getBeginDate());
     }
 
     /**
@@ -153,12 +122,9 @@ public class BanTest {
      */
     @Test
     public void testSetEndDate() {
-        System.out.println("setEndDate");
-        Date endDate = null;
-        Ban instance = null;
-        instance.setEndDate(endDate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban();
+        ban.setBeginDate("01-06-2020");
+        assertNotNull(ban.getEndDate());
     }
 
     /**
@@ -166,12 +132,8 @@ public class BanTest {
      */
     @Test
     public void testSetBans() {
-        System.out.println("setBans");
-        File Bans = null;
-        Ban instance = null;
-        instance.setBans(Bans);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        File Bans = new File("DataBase/Bans/BansDataBase.obj");
+        assertNotNull(Bans);
     }
 
     /**
@@ -179,13 +141,9 @@ public class BanTest {
      */
     @Test
     public void testToString() {
-        System.out.println("toString");
-        Ban instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
+        String banData = "Nick: elqueaprueba . BeginDate: 01-05-2020 . endDate: 01-06-2020 . IsBanned= " + isBanned;
+        assertEquals(ban.toString(),banData);
     }
     
 }
