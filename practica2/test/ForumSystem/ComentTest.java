@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import UserSystem.Users.UserTest;
 
 /**
  *
@@ -151,15 +152,13 @@ public class ComentTest {
      */
     @Test
     public void testVoteComent() {
-        System.out.println("VoteComent");
-        String Nick = "";
-        boolean Vote = false;
-        Coment instance = null;
-        boolean expResult = false;
-        boolean result = instance.VoteComent(Nick, Vote);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String name = "Cristian";
+        boolean voted = true;
+       
+        
+                
+        
+                
     }
 
     /**

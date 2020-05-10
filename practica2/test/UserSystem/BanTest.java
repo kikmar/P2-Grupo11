@@ -1,8 +1,54 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+package UserSystem;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Usuario
  */
+public class VisitorTest {
+    
+    public VisitorTest() {
+    }
+    
+    @Before
+    public void setUpClass() {
+        System.out.println("Entrando al metodo");
+    }
+    @After
+    public void afterUpClass() {
+        System.out.println("Saliendo del metodo");
+    }
+        
+    @Test
+    public void testVisitor(){
+        System.out.println("testVisitor");
+        
+    }
+    @Test
+    public void testgetID(){
+        System.out.println("testgetID");
+        int ini= 3;
+        Visitor newID = new Visitor(ini);
+        assertEquals(ini, newID.getID());
+    }
+    @Test
+    public void testsetID(){
+        System.out.println("testsetID");
+        int ini= 3;
+        Visitor newID = new Visitor(ini);
+        assertNotNull(newID.getID());
+        
+    }
+    
+    
+}
+
+
+*********************************************************************
 package UserSystem;
 
 import java.io.File;
@@ -22,128 +68,89 @@ public class BanTest {
     
     public BanTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
-    public void setUp() {
+    public void setUpClass() {
+        System.out.println("Entrando al metodo");
+    }
+    @After
+    public void afterUpClass() {
+        System.out.println("Saliendo del metodo");
+    }
+        
+    @Test
+    public void tesgetNick(){
+        System.out.println("tesgetNick");
+        Ban forbid = new Ban();
+        forbid.
+        assertEquals(Nick,forbid.getNick());
     }
     
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getNick method, of class Ban.
-     */
     @Test
-    public void testGetNick() {
-        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
-        final String nick = "elqueaprueba";
-        assertEquals(nick, ban.getNick());
+    public void testgetIsBanned(){
+        System.out.println("tesgetIsBanned");
+        
     }
-
-    /**
-     * Test of getIsBanned method, of class Ban.
-     */
+    
     @Test
-    public void testGetIsBanned() {
-        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
-        assertEquals(ban.getIsBanned(), true);
+    public void testgetBeginDate(){
+        System.out.println("testgetBeginDate");
+        
     }
-
-    /**
-     * Test of getBeginDate method, of class Ban.
-     */
+    
     @Test
-    public void testGetBeginDate() {
-        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
-        final String beginDate = "01-05-2020";
-        assertEquals(ban.getBeginDate(), beginDate);
+    public void testgetEndDate(){
+        System.out.println("tesgetEndDate");
+        
     }
-
-    /**
-     * Test of getEndDate method, of class Ban.
-     */
+    
     @Test
-    public void testGetEndDate() {
-        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
-        final String endDate = "01-06-2020";
-        assertEquals(ban.getEndDate(), endDate);
+    public void testgetBans(){
+        System.out.println("testgetBans");
+        
     }
-
-    /**
-     * Test of getBans method, of class Ban.
-     */
+    
     @Test
-    public void testGetBans() {
-        File Bans = new File("DataBase/Bans/BansDataBase.obj");
-        assertNotNull(Bans);
+    public void testsetNick(){
+        System.out.println("tesgetNick");
+        
     }
-
-    /**
-     * Test of setNick method, of class Ban.
-     */
+    
     @Test
-    public void testSetNick() {
-        final Ban ban = new Ban();
-        ban.setNick("elqueaprueba");
-        assertNotNull(ban.getNick());
+    public void testsetIsBanned(){
+        System.out.println("tesgetIsBanned");
+        
     }
-
-    /**
-     * Test of setIsBanned method, of class Ban.
-     */
+    
     @Test
-    public void testSetIsBanned() {
-        final Ban ban = new Ban();
-        ban.setIsBanned(true);
-        assertNotNull(ban.getIsBanned());
+    public void testsetBeginDate(){
+        System.out.println("testgetBeginDate");
+        
     }
-
-    /**
-     * Test of setBeginDate method, of class Ban.
-     */
+    
     @Test
-    public void testSetBeginDate() {
-        final Ban ban = new Ban();
-        ban.setBeginDate("01-05-2020");
-        assertNotNull(ban.getBeginDate());
+    public void tessetEndDate(){
+        System.out.println("tesgetEndDate");
+        
     }
-
-    /**
-     * Test of setEndDate method, of class Ban.
-     */
+    
     @Test
-    public void testSetEndDate() {
-        final Ban ban = new Ban();
-        ban.setBeginDate("01-06-2020");
-        assertNotNull(ban.getEndDate());
+    public void testsetBans(){
+        System.out.println("testgetBans");
+        
     }
-
-    /**
-     * Test of setBans method, of class Ban.
-     */
-    @Test
-    public void testSetBans() {
-        File Bans = new File("DataBase/Bans/BansDataBase.obj");
-        assertNotNull(Bans);
-    }
-
-    /**
-     * Test of toString method, of class Ban.
-     */
+    
     @Test
     public void testToString() {
-        final Ban ban = new Ban("elqueaprueba", true, "01-05-2020", "01-06-2020");
-        String banData = "Nick: elqueaprueba . BeginDate: 01-05-2020 . endDate: 01-06-2020 . IsBanned= " + isBanned;
-        assertEquals(ban.toString(),banData);
+        System.out.println("toString");
+        Ban instance = null;
+        String expResult = "";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }
+
+
+

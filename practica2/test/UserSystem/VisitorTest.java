@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package UserSystem;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,39 +15,35 @@ public class VisitorTest {
     public VisitorTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
-    public void setUp() {
+    public void setUpClass() {
+        System.out.println("Entrando al metodo");
+    }
+    @After
+    public void afterUpClass() {
+        System.out.println("Saliendo del metodo");
+    }
+        
+    @Test
+    public void testVisitor(){
+        System.out.println("testVisitor");
+        
+    }
+    @Test
+    public void testgetID(){
+        System.out.println("testgetID");
+        int ini= 3;
+        Visitor newID = new Visitor(ini);
+        assertEquals(ini, newID.getID());
+    }
+    @Test
+    public void testsetID(){
+        System.out.println("testsetID");
+        int ini= 3;
+        Visitor newID = new Visitor(ini);
+        assertNotNull(newID.getID());
+        
     }
     
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getID method, of class Visitor.
-     */
-    @Test
-    public void testGetID() {
-        Visitor visitor = new Visitor(12345);
-        assertEquals(visitor.getID(),12345);
-    }
-
-    /**
-     * Test of setID method, of class Visitor.
-     */
-    @Test
-    public void testSetID() {
-        Visitor visitor = new Visitor();
-        visitor.setID(12345);
-        assertNotNull(visitor.getID());
-    }
     
 }

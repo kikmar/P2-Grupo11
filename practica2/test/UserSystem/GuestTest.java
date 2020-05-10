@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UserSystem;
 
 import org.junit.After;
@@ -18,28 +13,38 @@ import static org.junit.Assert.*;
  */
 public class GuestTest {
     
-    @Test
     public GuestTest() {
-        Guest guest = new Guest(123456);
-        assertNotNull(guest);
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+   @Before
+    public void setUpClass() {
+        System.out.println("Entrando al metodo");
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
     @After
-    public void tearDown() {
+    public void afterUpClass() {
+        System.out.println("Saliendo del metodo");
     }
-
-    
+        
+    @Test
+    public void testGuest(){
+        System.out.println("testGuest");
+        
+    }
+    @Test
+    public void testGuestgetID(){
+        System.out.println("testgetID");
+        int ini= 3;
+        Guest newGuest = new Guest(ini);
+        assertEquals(ini, newGuest.getID());
+    }
+    @Test
+    public void testGuestsetID(){
+        System.out.println("testsetID");
+        int ini= 6;
+        Guest newGuest = new Guest(ini);
+        assertNotNull(newGuest.getID());
+        
+    }
     
 }
+
