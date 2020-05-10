@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import UserSystem.Users.UserTest;
+import UserSystem.Users.User;
 
 /**
  *
@@ -25,10 +25,12 @@ public class ComentTest {
     
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("Entrando al test");
     }
     
     @AfterClass
     public static void tearDownClass() {
+        System.out.println("Saliendo del test");
     }
     
     @Before
@@ -44,13 +46,9 @@ public class ComentTest {
      */
     @Test
     public void testGetValoration() {
-        System.out.println("getValoration");
-        Coment instance = null;
-        int expResult = 0;
-        int result = instance.getValoration();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+        int valor = 0;
+        assertEquals(valor,comentario.getValoration());
     }
 
     /**
@@ -58,13 +56,9 @@ public class ComentTest {
      */
     @Test
     public void testGetText() {
-        System.out.println("getText");
-        Coment instance = null;
-        String expResult = "";
-        String result = instance.getText();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+       String texto = "Hola buenos dias";
+       assertEquals(texto,comentario.getText());
     }
 
     /**
@@ -72,19 +66,17 @@ public class ComentTest {
      */
     @Test
     public void testGetNick() {
-        System.out.println("getNick");
-        Coment instance = null;
-        String expResult = "";
-        String result = instance.getNick();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+      String name = "Cristian";
+      assertEquals(name,comentario.getNick());
     }
 
     /**
      * Test of getValorants method, of class Coment.
      */
-    @Test
+    /**
+     * Aqui no se como iría para obtener la lista esa.
+     * @Test
     public void testGetValorants() {
         System.out.println("getValorants");
         Coment instance = null;
@@ -93,19 +85,16 @@ public class ComentTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }*/
 
     /**
      * Test of setValoration method, of class Coment.
      */
     @Test
     public void testSetValoration() {
-        System.out.println("setValoration");
-        int valoration = 0;
-        Coment instance = null;
-        instance.setValoration(valoration);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+        comentario.setValoration(0);
+        assertNotNull(comentario.getValoration());
     }
 
     /**
@@ -113,12 +102,9 @@ public class ComentTest {
      */
     @Test
     public void testSetText() {
-        System.out.println("setText");
-        String Text = "";
-        Coment instance = null;
-        instance.setText(Text);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+        comentario.setText("Hola buenos dias");
+        assertNotNull(comentario.getText());
     }
 
     /**
@@ -126,39 +112,30 @@ public class ComentTest {
      */
     @Test
     public void testSetNick() {
-        System.out.println("setNick");
-        String Nick = "";
-        Coment instance = null;
-        instance.setNick(Nick);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+        comentario.setNick("Cristian");
+        assertNotNull(comentario.getNick());
     }
 
     /**
      * Test of setValorants method, of class Coment.
-     */
+     
     @Test
     public void testSetValorants() {
-        System.out.println("setValorants");
         LinkedList<NickVote> Valorants = null;
         Coment instance = null;
         instance.setValorants(Valorants);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(instance.getValorants());
     }
-
+    * */
     /**
      * Test of VoteComent method, of class Coment.
      */
     @Test
     public void testVoteComent() {
-        String name = "Cristian";
-        boolean voted = true;
-       
-        
-                
-        
-                
+        Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+        comentario.VoteComent("Cristian", true);
+        assertNotNull(comentario.VoteComent("Cristian",true));            
     }
 
     /**
@@ -166,13 +143,12 @@ public class ComentTest {
      */
     @Test
     public void testToString() {
-        System.out.println("toString");
-        Coment instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coment comentario = new Coment("Cristian","Hola buenos dias",0);
+        String dataUser = "Nick: "+comentario.getNick()+"Text: "+comentario.getText()+
+                "Valoration: "+comentario.getValoration();
+        String prueba = "Nick: Cristian  Text: Hola buenos dias  Valoration: 0";
+        assertEquals(dataUser,prueba);
+                
     }
     
 }

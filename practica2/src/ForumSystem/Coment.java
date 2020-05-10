@@ -21,7 +21,7 @@ public class Coment implements Serializable{
     private LinkedList <NickVote> ValorantsList = new LinkedList();
     private static final long serialVersionUID = 1L;
 
-    public Coment(String Nick, String Text) {
+    public Coment(String Nick, String Text, int Valoration) {
         this.Text = Text;
         this.Owner = Nick;
         this.Valoration = 0;
