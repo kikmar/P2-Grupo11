@@ -25,10 +25,17 @@ public class UserTest {
     
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("Entrando al metodo");
     }
     
     @AfterClass
     public static void tearDownClass() {
+        System.out.println("Saliendo del metodo");
+    }
+    
+    @Test
+    public void UserTest(){
+        System.out.println("UserTest");   
     }
     
     @Before
@@ -44,7 +51,7 @@ public class UserTest {
      */
     @Test
     public void testGetName() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 98);
         String nombre = "Heraldo";
         assertEquals(usuario.getName(),nombre);
     }
@@ -54,7 +61,7 @@ public class UserTest {
      */
     @Test
     public void testGetSurname1() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 23);
         String apellido1 = "Nicu";
         assertEquals(usuario.getSurname1(),apellido1);
 
@@ -65,7 +72,7 @@ public class UserTest {
      */
     @Test
     public void testGetSurname2() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 33);
         String apellido2 = "Sroda";
         assertEquals(usuario.getSurname2(),apellido2);
     }
@@ -75,7 +82,7 @@ public class UserTest {
      */
     @Test
     public void testGetNick() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 45);
         String nick = "elqueaprueba";
         assertEquals(usuario.getNick(),nick);
     }
@@ -85,7 +92,7 @@ public class UserTest {
      */
     @Test
     public void testGetEmail() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 54);
         String email = "h.nicu@alumnos.urjc.es";
         assertEquals(usuario.getEmail(),email);
     }
@@ -95,7 +102,7 @@ public class UserTest {
      */
     @Test
     public void testGetPassword() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 12);
         String password = "1234";
         assertEquals(usuario.getPassword(),password);
     }
@@ -105,7 +112,7 @@ public class UserTest {
      */
     @Test
     public void testIsIsAdmin() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 76);
         usuario.setIsAdmin(false);
         assertEquals(usuario.isIsAdmin(),false);
     }
@@ -115,7 +122,7 @@ public class UserTest {
      */
     @Test
     public void testIsIsStudent() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 10);
         assertEquals(usuario.isIsStudent(),true);
     }
 
@@ -124,7 +131,7 @@ public class UserTest {
      */
     @Test
     public void testIsIsConected() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setIsConected(true);
         assertEquals(usuario.isIsConected(),true);
     }
@@ -142,7 +149,7 @@ public class UserTest {
      */
     @Test
     public void testSetName() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setName("Heraldo");
         assertNotNull(usuario.getName());
     }
@@ -152,7 +159,7 @@ public class UserTest {
      */
     @Test
     public void testSetSurname1() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setSurname1("Morilla");
         assertNotNull(usuario.getSurname1());
     }
@@ -162,7 +169,7 @@ public class UserTest {
      */
     @Test
     public void testSetSurname2() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setSurname2("Coto");
         assertNotNull(usuario.getSurname2());
     }
@@ -172,7 +179,7 @@ public class UserTest {
      */
     @Test
     public void testSetNick() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setNick("ironpiper");
         assertNotNull(usuario.getNick());
     }
@@ -182,7 +189,7 @@ public class UserTest {
      */
     @Test
     public void testSetEmail() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setEmail("z.hortaleza@urjc.es");
         assertNotNull(usuario.getEmail());
     }
@@ -192,7 +199,7 @@ public class UserTest {
      */
     @Test
     public void testSetPassword() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setPassword("12345");
         assertNotNull(usuario.getPassword());
     }
@@ -202,7 +209,7 @@ public class UserTest {
      */
     @Test
     public void testSetIsAdmin() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setIsAdmin(true);
         assertNotNull(usuario.isIsAdmin());
     }
@@ -212,7 +219,7 @@ public class UserTest {
      */
     @Test
     public void testSetIsStudent() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setIsStudent(true);
         assertNotNull(usuario.isIsStudent());
     }
@@ -222,7 +229,7 @@ public class UserTest {
      */
     @Test
     public void testSetIsConected() {
-        User usuario = new User ();
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         usuario.setIsConected(true);
         assertNotNull(usuario.isIsConected());
     }
@@ -232,7 +239,7 @@ public class UserTest {
      */
     @Test
     public void testToString() {
-        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        User usuario = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 43);
         String dataUser = "Name: "+usuario.getName()+" . Surname1: "+usuario.getSurname1()+" . Surname2: "+usuario.getSurname2()+
         " . Nick: "+ usuario.getNick()+" . Password: "+ usuario.getPassword()+" . Email: "+usuario.getEmail()+
         " . IsAdmin: "+ usuario.isIsAdmin()+" . IsStudent: "+usuario.isIsStudent()+". IsLogged: "+ usuario.isIsConected();

@@ -23,10 +23,18 @@ public class TeacherTest {
     
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("Entrando al metodo");
     }
     
     @AfterClass
     public static void tearDownClass() {
+        System.out.println("Saliendo del metodo");
+    }
+    
+    @Test
+    public void TeacherTest(){
+        System.out.println("TeacherTest");
+        
     }
     
     @Before
@@ -39,7 +47,7 @@ public class TeacherTest {
 
     @Test
     public void testSomeMethod() {
-        Teacher profesor1 = new Teacher("Antonio", "Garcia", "Pardo", "gpardo", "ag.pardo@urjc.es", "5678", false, "294892");
+        Teacher profesor1 = new Teacher("Antonio", "Garcia", "Pardo", "gpardo", "ag.pardo@urjc.es", "5678", false, 143);
         assertNotNull(profesor1);
     }
     

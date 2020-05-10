@@ -23,10 +23,16 @@ public class StudentTest {
     
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("Entrando al metodo");
     }
     
     @AfterClass
     public static void tearDownClass() {
+        System.out.println("Saliendo del metodo");
+    }
+    @Test
+    public void StudentTest(){
+        System.out.println("StudentTest");
     }
     
     @Before
@@ -39,7 +45,7 @@ public class StudentTest {
 
     @Test
     public void testSomeMethod() {
-        Student estudiante1 = new Student("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, "0987653");
+        Student estudiante1 = new Student("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 1);
         assertNotNull(estudiante1);
     }
     

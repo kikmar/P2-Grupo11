@@ -22,7 +22,6 @@ public class Ban implements Serializable{
     private File Bans = new File("DataBase/Bans/BansDataBase.obj");
     
     private static final long serialVersionUID = 1L;
-    
 
     public Ban(String Nick,boolean isBanned,String beginDate,String endDate) throws IOException, ClassNotFoundException, ParseException {
         

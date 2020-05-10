@@ -2,6 +2,8 @@
 package UserSystem;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,11 +30,11 @@ public class BanTest {
     }
         
     @Test
-    public void tesgetNick(){
-        System.out.println("tesgetNick");
-        Ban forbid = new Ban();
-        forbid.
-        assertEquals(Nick,forbid.getNick());
+    public void tesgetNick() throws IOException, ClassNotFoundException, ParseException{
+        System.out.println("testgetNick");
+        Ban forbid = new Ban("Alberto",true,"04/05/2020","06/05/2020");
+        String name = forbid.getNick();
+        assertEquals(name,forbid.getNick());
     }
     
     @Test
