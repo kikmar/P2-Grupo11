@@ -153,7 +153,7 @@ public class Post implements Serializable{
     //Methods
     public void Coment(String Nick, String Text) throws IOException, FileNotFoundException, ClassNotFoundException {
         if (IsUser(Nick)){
-            Coment Coment = new Coment(Nick,Text);
+            Coment Coment = new Coment(Nick,Text,0);
             ComentList.add(Coment);
         }
     }
