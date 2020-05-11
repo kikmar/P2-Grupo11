@@ -2,9 +2,7 @@
 package ForumSystem.PostContent;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -31,10 +29,10 @@ public class ContentTest {
      */
     @Test
     public void testSetPostContent() {
-        System.out.println("testSetPostContent");
-        String ini= "Its a proof";
-        Content newContent = new Content(ini);
-        assertNotNull(newContent.getPostContent());
+        Content content = new Content("Esto es la prueba de Content");
+        String newPostContent = "Esto es la prueba del método setPostContent de la clase Content";
+        content.setPostContent(newPostContent);
+        assertEquals(content.getPostContent(),newPostContent);
     }
 
     /**
@@ -42,10 +40,11 @@ public class ContentTest {
      */
     @Test
     public void testGetPostContent() {
-        System.out.println("testGetPostContent");
-        String ini= "its a proof";
-        Content newContent = new Content(ini);
-        assertEquals(ini, newContent.getPostContent());
+        Content content = new Content("Esto es la prueba del metodo getPostContent");
+        String checkContent = "Esto es la prueba del metodo getPostContent";
+        assertEquals(content.getPostContent(),checkContent);
+        
+
     }
 
 }
