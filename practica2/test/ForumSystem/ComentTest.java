@@ -76,25 +76,21 @@ public class ComentTest {
      */
     /**
      * Aqui no se como iría para obtener la lista esa.
-     * @Test
+     */ @Test
     public void testGetValorants() {
-        System.out.println("getValorants");
-        Coment instance = null;
-        LinkedList<NickVote> expResult = null;
-        LinkedList<NickVote> result = instance.getValorants();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
+        Coment coment = new Coment("Cristian","Hola buenos dias",0);
+        coment.VoteComent("Cristian", true);
+        assertNotNull(coment.getValorants());
+    }
 
     /**
      * Test of setValoration method, of class Coment.
      */
     @Test
     public void testSetValoration() {
-        Coment comentario = new Coment("Cristian","Hola buenos dias",0);
-        comentario.setValoration(0);
-        assertNotNull(comentario.getValoration());
+        Coment coment = new Coment("Cristian","Hola buenos dias",0);
+        coment.setValoration(7);
+        assertEquals(coment.getValoration(), 7);
     }
 
     /**
@@ -102,9 +98,10 @@ public class ComentTest {
      */
     @Test
     public void testSetText() {
-       Coment comentario = new Coment("Cristian","Hola buenos dias",0);
-        comentario.setText("Hola buenos dias");
-        assertNotNull(comentario.getText());
+       Coment coment = new Coment("Cristian","Hola buenos dias",0);
+        coment.setText("Hola buenas noches");
+        String checkText ="Hola buenas noches";
+        assertEquals(coment.getText(),checkText);
     }
 
     /**
@@ -112,22 +109,20 @@ public class ComentTest {
      */
     @Test
     public void testSetNick() {
-        Coment comentario = new Coment("Cristian","Hola buenos dias",0);
-        comentario.setNick("Cristian");
-        assertNotNull(comentario.getNick());
+        Coment coment = new Coment("Cristian","Hola buenos dias",0);
+        coment.setNick("crnicu");
+        String checkNick = "crnicu";
+        assertEquals(coment.getNick(), checkNick);
     }
 
     /**
      * Test of setValorants method, of class Coment.
-     
+    */
     @Test
     public void testSetValorants() {
-        LinkedList<NickVote> Valorants = null;
-        Coment instance = null;
-        instance.setValorants(Valorants);
-        assertNotNull(instance.getValorants());
+        
     }
-    * */
+    
     /**
      * Test of VoteComent method, of class Coment.
      */
