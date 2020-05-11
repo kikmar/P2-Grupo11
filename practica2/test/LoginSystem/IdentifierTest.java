@@ -5,6 +5,10 @@
  */
 package LoginSystem;
 
+import UserSystem.Users.User;
+import LoginSystem.Identifier;
+import java.io.File;
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,19 +46,16 @@ public class IdentifierTest {
      */
     @Test
     public void testRegister() throws Exception {
-        System.out.println("Register");
-        String Name = "";
-        String Surname1 = "";
-        String Surname2 = "";
-        String Nick = "";
-        String Email = "";
-        String Password = "";
-        Identifier instance = null;
-        boolean expResult = false;
-        boolean result = instance.Register(Name, Surname1, Surname2, Nick, Email, Password);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        File Users = null;
+        File Bans = null;
+        Identifier identifier = new Identifier(Users, Bans);
+        User user = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 98);
+        assertFalse(identifier.Register(user.getName(), user.getSurname1(), user.getSurname2(), user.getNick(), user.getEmail(), user.getPassword()));
+        /*
+        hago el assertFalse porque los archivos Users y Bans han sido creados nuevos
+        con el constructor de Identifier y es evidente que el usuario no va 
+        aparecer en el archivo de usuarios registrados
+        */
     }
 
     /**
@@ -62,15 +63,12 @@ public class IdentifierTest {
      */
     @Test
     public void testLogin() throws Exception {
-        System.out.println("Login");
-        String Email = "";
-        String Password = "";
-        Identifier instance = null;
-        boolean expResult = false;
-        boolean result = instance.Login(Email, Password);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        File Users = null;
+        File Bans = null;
+        Identifier identifier = new Identifier(Users, Bans);
+        User user = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 98);
+        assertFalse(identifier.Login(user.getEmail(), user.getPassword()));
+        
     }
 
     /**
@@ -78,15 +76,16 @@ public class IdentifierTest {
      */
     @Test
     public void testLogout() throws Exception {
-        System.out.println("Logout");
-        String Email = "";
-        String Password = "";
-        Identifier instance = null;
-        boolean expResult = false;
-        boolean result = instance.Logout(Email, Password);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        File Users = null;
+        File Bans = null;
+        Identifier identifier = new Identifier(Users, Bans);
+        User user = new User ("Heraldo", "Nicu", "Sroda", "elqueaprueba", "h.nicu@alumnos.urjc.es", "1234", true, 98);
+        assertFalse(identifier.Login(user.getEmail(), user.getPassword()));
+        /*
+        hago el assertFalse porque los archivos Users y Bans han sido creados nuevos
+        con el constructor de Identifier y es evidente que el usuario no va 
+        aparecer en el archivo de usuarios registrados
+        */
     }
-    
+        
 }
