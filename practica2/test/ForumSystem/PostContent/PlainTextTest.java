@@ -23,10 +23,12 @@ public class PlainTextTest {
     
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("Entrando a la prueba:");
     }
     
     @AfterClass
     public static void tearDownClass() {
+        System.out.println("Saliendo de la prueba");
     }
     
     @Before
@@ -39,8 +41,7 @@ public class PlainTextTest {
 
     @Test
     public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
     
 }
