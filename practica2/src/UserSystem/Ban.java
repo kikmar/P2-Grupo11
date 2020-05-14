@@ -30,7 +30,7 @@ public class Ban implements Serializable{
 	Date beginDateConvert = begin.parse(beginDate);
         
         DateFormat end = new SimpleDateFormat("dd-MM-yyyy");
-	Date endDateConvert = end.parse(beginDate);
+	Date endDateConvert = end.parse(endDate);
 	
 	
         
