@@ -136,14 +136,13 @@ public class ComentTest {
     /**
      * Test of toString method, of class Coment.
      */
-    @Test
+  @Test
     public void testToString() {
         Coment comentario = new Coment("Cristian","Hola buenos dias",0);
-        String dataUser = "Nick: "+comentario.getNick()+"Text: "+comentario.getText()+
-                "Valoration: "+comentario.getValoration();
-        String prueba = "Nick: Cristian  Text: Hola buenos dias  Valoration: 0";
+        String dataUser = "Nick: "+comentario.getNick()+" Text: "+comentario.getText()+" Valoration: "+comentario.getValoration();
+        String prueba = "Nick: Cristian Text: Hola buenos dias Valoration: 0";
         assertEquals(dataUser,prueba);
-                
+
     }
     
 }

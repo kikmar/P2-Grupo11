@@ -27,7 +27,7 @@ public class SubForum implements Serializable {
    
    private static final long serialVersionUID = 1L;
    
-   public SubForum(String SubForumName) {
+   public SubFo rum(String SubForumName) {
         this.SubForumName = SubForumName; 
     }
    

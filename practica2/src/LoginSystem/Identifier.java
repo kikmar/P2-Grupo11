@@ -43,9 +43,10 @@ public class Identifier{
     //Methods
     public boolean Register(String Name,String Surname1,String Surname2,String Nick,String Email,String Password) throws IOException, FileNotFoundException, ClassNotFoundException{
         boolean IsRegisterOk = false;
-        
-        if(!AlreadyExists(Email)){
-           //Parameters validation
+         if(!AlreadyExists(Email)){
+           //Parameters validatio
+           
+           
             if (isPersonalFromUrjc(Email)){
 
                 if (isStudentOrTeacher(Email)){
@@ -62,7 +63,7 @@ public class Identifier{
             else{
                 IsRegisterOk = false;
             } 
-        }
+      }
         
         
         return IsRegisterOk;
@@ -158,6 +159,7 @@ public class Identifier{
         return isStudent;
     }
     
+   
     private boolean isPersonalFromUrjc(String Email){
         boolean isFromUrjc = true;
         int emailType1 = Email.indexOf("@alumnos.urjc.es");
