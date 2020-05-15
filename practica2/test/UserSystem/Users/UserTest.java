@@ -5,12 +5,8 @@
  */
 package UserSystem.Users;
 
-import ForumSystem.Notification;
-import java.util.LinkedList;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,16 +17,6 @@ import static org.junit.Assert.*;
 public class UserTest {
     
     public UserTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-        System.out.println("Entrando al metodo");
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-        System.out.println("Saliendo del metodo");
     }
     
     @Test

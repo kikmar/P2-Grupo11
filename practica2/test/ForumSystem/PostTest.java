@@ -1,9 +1,7 @@
 package ForumSystem;
 
-import ForumSystem.PostContent.Content;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.LinkedList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

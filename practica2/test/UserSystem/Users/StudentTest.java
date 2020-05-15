@@ -5,10 +5,6 @@
  */
 package UserSystem.Users;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,27 +17,12 @@ public class StudentTest {
     public StudentTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-        System.out.println("Entrando al metodo");
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-        System.out.println("Saliendo del metodo");
-    }
+
     @Test
     public void StudentTest(){
         System.out.println("StudentTest");
     }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     @Test
     public void testSomeMethod() {

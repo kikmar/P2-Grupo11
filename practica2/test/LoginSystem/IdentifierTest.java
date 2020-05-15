@@ -5,15 +5,7 @@
  */
 package LoginSystem;
 
-import UserSystem.Users.User;
-import LoginSystem.Identifier;
 import java.io.File;
-import java.io.IOException;
-import java.util.Properties;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

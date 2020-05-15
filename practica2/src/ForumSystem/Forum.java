@@ -577,7 +577,7 @@ public class Forum implements Serializable {
     
     
     //Show The Forum Method
-    public boolean Mostrar() throws FileNotFoundException, IOException, ClassNotFoundException{
+    public boolean Mostrar() throws FileNotFoundException, IOException, ClassNotFoundException{  // no deberia ser boolean sino void
         boolean mostrar = false;
         LinkedList <SubForum> SubForumList  = GetSubForumList();
         LinkedList <User> UserList  = GetUserList();
