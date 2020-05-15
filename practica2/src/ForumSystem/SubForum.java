@@ -60,7 +60,7 @@ public class SubForum implements Serializable {
     }
     
    //Methods
-   public boolean Suscribe (String Nick){
+   public boolean Suscribe (String Nick){       // Deberia ser void pero lo cambiamos para que en la practica 3 hagamos comprobaciones
         boolean Subscribed = false;
 
         for (int i = 0; i < SubscribersList.size(); i++) {
@@ -76,7 +76,7 @@ public class SubForum implements Serializable {
         return Subscribed;
     }
    
-   public Boolean Unsubscribe (String Nick){
+   public Boolean Unsubscribe (String Nick){    // Deberia ser void pero lo cambiamos para que en la practica 3 hagamos comprobaciones 
         boolean Subscribed = false;
         int Position = -1;
         
