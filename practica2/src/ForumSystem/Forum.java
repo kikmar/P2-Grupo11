@@ -577,8 +577,8 @@ public class Forum implements Serializable {
     
     
     //Show The Forum Method
-    public void Mostrar() throws FileNotFoundException, IOException, ClassNotFoundException{
-
+    public boolean Mostrar() throws FileNotFoundException, IOException, ClassNotFoundException{
+        boolean mostrar = false;
         LinkedList <SubForum> SubForumList  = GetSubForumList();
         LinkedList <User> UserList  = GetUserList();
 
@@ -615,12 +615,15 @@ public class Forum implements Serializable {
                     for(int k=0; k<ComentsList.size();k++){
                         Coment Coment = ComentsList.get(k);
                         System.out.println("COMENT "+k+": "+ Coment.toString());
+                        mostrar = true; 
+                       
                     }
                 }
             }
         }
         else{
             System.out.println("NO SUBFORUMS CREATED YET");
-        }      
+        }
+         return mostrar;
     }
 }

@@ -1,27 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- /
 package ForumSystem;
 
-import java.util.LinkedList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Usuario
  */
-public class SubForumTest {
+public class SubForumTest implements Serializable{
+
+    SubForum subforum = new SubForum("A");
 
     public SubForumTest() {
     }
-
+//Antes y después de entrar a los metodos
    @Before
     public void setUpClass() {
         System.out.println("Entrando al metodo");
@@ -30,10 +27,22 @@ public class SubForumTest {
     public void afterUpClass() {
         System.out.println("Saliendo del metodo");
     }
+
     @Test
-    public void Suscribe() {
-     SubForum subforum = new SubForum("Nombre"); 
-     assertTrue(subforum.Suscribe());
+    public void testSuscribe() {
+    subforum.Suscribe("Cr");
+    assertTrue(subforum.Suscribe("Cr"));
+    }
+
+    @Test
+    public void testUnsubscribe() { 
+     subforum.Suscribe("Cr");
+     assertTrue(subforum.Unsubscribe("Cr"));
+    }
+
+    @Test
+    public void testCreatePost() throws IOException, FileNotFoundException, ClassNotFoundException { 
+     assertTrue (subforum.CreatePost("postprueba", "Cr", 1, "hola"));
     }
 
     @Test

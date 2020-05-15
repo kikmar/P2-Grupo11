@@ -60,7 +60,7 @@ public class SubForum implements Serializable {
     }
     
    //Methods
-   public void Suscribe (String Nick){
+   public boolean Suscribe (String Nick){
         boolean Subscribed = false;
 
         for (int i = 0; i < SubscribersList.size(); i++) {
@@ -72,10 +72,11 @@ public class SubForum implements Serializable {
         if (Subscribed == false){
             SubscribersList.add(Nick);
             System.out.println("Subscription done");               
-        }       
+        } 
+        return Subscribed;
     }
    
-   public void Unsubscribe (String Nick){
+   public Boolean Unsubscribe (String Nick){
         boolean Subscribed = false;
         int Position = -1;
         
@@ -94,6 +95,7 @@ public class SubForum implements Serializable {
         else {
             System.out.println("Already unsuscribed");  
         }
+        return Subscribed;
     }
    
    public boolean CreatePost(String Tittle,String Owner, int TypeOfContent, String PostContent) throws IOException, FileNotFoundException, ClassNotFoundException{
