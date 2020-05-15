@@ -274,11 +274,13 @@ public class Post implements Serializable{
         return UserList;
     }
 
-    public void Mostrar(){  
+    public int Mostrar(){       // Deberia ser void pero ponemos int para comprobar el test y el return no deberia existir
         System.out.println(Tittle);
-        for(int i=0; i<ContentList.size();i++){
+        int i;
+        for(i=0; i<ContentList.size();i++){
             System.out.println(ContentList.get(i).getPostContent());
         }
+        return i;
     }
 
     public String toString(){
